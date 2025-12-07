@@ -3,617 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextEdge Solutions | Your Partner in Web Development & Cloud Solutions</title>
-    <meta name="description" content="NextEdge Solutions offers expert web development, robust cloud solutions, and reliable cloud hosting services. Build your online presence with us!">
-
-    <link rel="icon" href="https://placehold.co/32x32/1A3350/DAA520/png?text=NE" type="image/png">
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        heading: ['Montserrat', 'sans-serif'],
-                        sans: ['Open Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            DEFAULT: '#1A3350', // Deep Dark Blue - Rich and sophisticated
-                            light: '#2B4A6F',   // A slightly lighter shade for accents/hover
-                            dark: '#0F223A',    // Even darker for backgrounds or strong contrast
-                        },
-                        accent: {
-                            DEFAULT: '#DAA520', // Goldenrod (more distinct gold)
-                            light: '#FFD700',   // Lighter Gold for hover/active states
-                            dark: '#B8860B',    // Darker Goldenrod for subtle contrast
-                        },
-                        neutral: {
-                            dark: '#2C3E50',    // Dark Slate Blue - For main text, slightly adjusted
-                            medium: '#95A5A6',  // Asbestos - For secondary text/subtle hints, slightly lighter
-                            light: '#ECF0F1',   // Clouds - Light background for sections
-                            white: '#FDFDFD',   // Off-white for cards and main background
-                            border: '#BDC3C7',  // Silver - For borders and subtle dividers
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>Jane Doe - Stories. Ideas. Visualized.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        /* Custom styles - ensure these align with the new color palette */
-        .transition-transform {
-            transition-property: transform;
-            transition-duration: 300ms;
-            transition-timing-function: ease-out;
+        /* 1. Global Reset and Variables */
+        :root {
+            --primary-color: #ff8c00; /* Vibrant orange for highlights */
+            --secondary-color: #383838; /* Background for cards/elements */
+            --background-color: #1a1a1a; /* Dark background color */
+            --text-color: #f0f0f0; /* Light text color */
+            --font-family: 'Arial', sans-serif;
         }
-        .transition-colors {
-            transition-property: background-color, border-color, color;
-            transition-duration: 300ms;
-            transition-timing-function: ease-in-out;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        html, body {
-            overflow-x: hidden;
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 4%; /* Add horizontal padding for the main content area */
         }
-        .modal.active {
+
+        /* 2. Header (Navigation Bar) Styling */
+        .navbar {
             display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
         }
-        .modal-content-animate {
-            transform: translateY(20px);
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-subheading {
+            font-size: 0.7rem;
+            font-weight: normal;
+            color: #b0b0b0;
+            margin-top: 2px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 1rem;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* 3. Hero Section Styling */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 0;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-actions button {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .watch-video-btn {
+            background: none;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .watch-video-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .explore-books-btn {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .explore-books-btn:hover {
+            background-color: #505050;
+            border-color: #505050;
+        }
+
+        /* -------------------------- */
+        /* VIDEO SECTION STYLING */
+        /* -------------------------- */
+        .hero-video-container {
+            flex: 1;
+            max-width: 50%;
+            /* Maintain 16:9 aspect ratio */
+            position: relative;
+            padding-bottom: 28.125%; 
+            height: 0; 
+            overflow: hidden;
+            border-radius: 10px;
+            
+            /* --- MODIFIED: ADDED ORANGE BORDER --- */
+            border: 3px solid var(--primary-color); 
+            /* ------------------------------------- */
+        }
+
+        .hero-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 4. Explore My Work Section Styling */
+        .explore-work {
+            padding: 50px 0 100px 0;
+        }
+
+        .explore-work h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 30px;
+            position: relative;
+        }
+
+        .work-card {
+            flex: 1;
+            background-color: #262626;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #3a3a3a;
+            transition: border-color 0.3s, background-color 0.3s;
+            text-align: left;
+        }
+
+        .work-card:hover {
+            border-color: var(--primary-color);
+            background-color: #2e2e2e;
+        }
+
+        .work-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .work-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .work-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        /* JS-enabled classes for smooth loading effect */
+        .loading-fade {
             opacity: 0;
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
-        .modal.active .modal-content-animate {
-            transform: translateY(0);
+
+        .loaded {
             opacity: 1;
+            transform: translateY(0);
         }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        
+        /* ------------------------------------------------------------------ */
+        /* 5. MEDIA QUERIES FOR MOBILE/TABLET RESPONSIVENESS (Max Width: 768px) */
+        /* ------------------------------------------------------------------ */
 
-        /* Keyframe Animations (keep as is, they are generic) */
-        @keyframes fadeInSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .nav-links a {
+                margin-left: 15px;
+            }
+            /* Adjust video container padding for smaller desktop/tablet sizes */
+            .hero-video-container {
+                padding-bottom: calc(50% * 0.5625);
             }
         }
-        .animate-fade-in-up {
-            animation: fadeInSlideUp 0.7s ease-out forwards;
-        }
-        .animate-delay-100 { animation-delay: 0.1s; }
-        .animate-delay-200 { animation-delay: 0.2s; }
-        .animate-delay-300 { animation-delay: 0.3s; }
-        .animate-delay-400 { animation-delay: 0.4s; }
-        .animate-delay-500 { animation-delay: 0.5s; }
-        .animate-delay-600 { animation-delay: 0.6s; }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0 5%;
+            }
 
-        /* Custom glow for hover borders - updated to new primary-light */
-        .group:hover .group-hover-glow {
-            box-shadow: 0 0 0 4px rgba(43, 74, 111, 0.5); /* primary-light with opacity */
-        }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 10px;
+            }
 
-        /* Subtle gradient for buttons and call-to-actions */
-        .btn-gradient-primary {
-            background-image: linear-gradient(to right, var(--tw-colors-primary-light), var(--tw-colors-primary));
-            transition: all 0.3s ease-in-out;
-        }
-        .btn-gradient-primary:hover {
-            background-image: linear-gradient(to right, var(--tw-colors-primary), var(--tw-colors-primary-dark));
-        }
-        .btn-gradient-accent {
-            background-image: linear-gradient(to right, var(--tw-colors-accent), var(--tw-colors-accent-dark));
-            transition: all 0.3s ease-in-out;
-        }
-        .btn-gradient-accent:hover {
-            background-image: linear-gradient(to right, var(--tw-colors-accent-light), var(--tw-colors-accent));
-        }
+            .nav-links {
+                margin-top: 15px;
+                margin-left: 0;
+                text-align: left;
+                width: 100%;
+            }
 
+            .nav-links a {
+                display: inline-block;
+                margin-left: 0;
+                margin-right: 15px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-section {
+                flex-direction: column;
+                padding: 50px 0;
+                gap: 30px;
+            }
+
+            .hero-content, .hero-video-container {
+                max-width: 100%;
+            }
+            
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-video-container {
+                order: 1;
+                padding-bottom: 56.25%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .card-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
-<body class="font-sans text-neutral-dark bg-neutral-white antialiased pt-20">
+<body>
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-neutral-white shadow-lg py-4 border-b border-neutral-border">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3 text-2xl font-extrabold text-primary" aria-label="NextEdge Solutions Home">
-                <img src="https://placehold.co/50x50/1A3350/DAA520/png?text=NE" alt="NextEdge Solutions Logo" class="h-12 w-12 rounded-full shadow-md border-2 border-accent">
-                <span class="font-heading text-3xl">NextEdge <span class="text-accent">Solutions</span></span>
-            </a>
-
-            <button id="menu-toggle" class="lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="block w-6 h-0.5 bg-neutral-dark transition-all duration-300 ease-in-out"></span>
-                <span class="block w-6 h-0.5 bg-neutral-dark mt-1 transition-all duration-300 ease-in-out"></span>
-                <span class="block w-6 h-0.5 bg-neutral-dark mt-1 transition-all duration-300 ease-in-out"></span>
-            </button>
-
-            <nav id="main-nav" class="hidden lg:flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-8 absolute lg:static top-full left-0 w-full lg:w-auto bg-neutral-white lg:bg-transparent shadow-md lg:shadow-none p-6 lg:p-0 border-t lg:border-t-0 border-neutral-border">
-                <ul class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8">
-                    <li><a href="#hero" class="text-neutral-medium hover:text-accent font-semibold transition-colors py-2 block lg:py-0">Home</a></li>
-                    <li><a href="#services-brief" class="text-neutral-medium hover:text-accent font-semibold transition-colors py-2 block lg:py-0">Our Services</a></li>
-                    <li><a href="#trust-builder" class="text-neutral-medium hover:text-accent font-semibold transition-colors py-2 block lg:py-0">Why Choose Us</a></li>
-                    <li><a href="#success-stories-carousel" class="text-neutral-medium hover:text-accent font-semibold transition-colors py-2 block lg:py-0">Case Studies</a></li>
-                    <li><a href="#connect-demo" class="text-neutral-medium hover:text-accent font-semibold transition-colors py-2 block lg:py-0">Contact Us</a></li>
-                </ul>
-            </nav>
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-main">
+                ADITYA GIRI
+            </div>
+            <span class="logo-subheading">
+                TECH | LETERATURE | CREATOR
+            </span>
         </div>
+        <nav class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Books</a>
+            <a href="#">Press</a>
+            <a href="#">Writings</a>
+            <a href="#">Work/Videos</a>
+        </nav>
     </header>
 
-    <section id="hero" class="relative bg-primary-dark py-20 md:py-32 flex items-center justify-center text-center text-neutral-white overflow-hidden">
-        <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
-        <div class="container mx-auto px-4 relative z-20">
-            <h1 class="text-4xl md:text-6xl font-extrabold font-heading leading-tight mb-8 opacity-0 animate-fade-in-up">Transform Your Vision into Digital Reality!</h1>
-            <p class="text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto opacity-0 animate-fade-in-up animate-delay-100">Expert <span class="text-accent-light">Web Development</span>, Scalable <span class="text-accent-light">Cloud Solutions</span> & Reliable <span class="text-accent-light">Cloud Hosting</span>.</p>
-            <button id="open-popup-btn" class="inline-flex items-center px-10 py-4 bg-accent rounded-full shadow-xl hover:bg-accent-dark text-neutral-white font-bold text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent-light opacity-0 animate-fade-in-up animate-delay-200 btn-gradient-accent" aria-haspopup="dialog" aria-controls="popup-modal">
-                Get a FREE Consultation <i class="fas fa-arrow-right ml-3"></i>
-            </button>
-        </div>
-    </section>
-
-    <section id="services-brief" class="py-16 md:py-24 bg-neutral-light">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold font-heading text-neutral-dark mb-4 opacity-0 animate-fade-in-up animate-delay-100">Our Comprehensive Digital Services</h2>
-            <p class="text-lg text-neutral-medium mb-12 max-w-4xl mx-auto opacity-0 animate-fade-in-up animate-delay-200">We provide end-to-end solutions to build, optimize, and maintain your digital presence with cutting-edge technology.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-neutral-white p-6 rounded-xl shadow-lg border border-neutral-border hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center opacity-0 animate-fade-in-up animate-delay-300">
-                    <div class="w-20 h-20 mb-4 rounded-full bg-primary flex items-center justify-center text-white text-4xl shadow-md border-2 border-primary-light">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Web Development</h3>
-                    <p class="text-neutral-medium text-center">Custom websites, e-commerce solutions, and robust web applications tailored to your business needs, focusing on UX/UI and performance.</p>
-                </div>
-                <div class="bg-neutral-white p-6 rounded-xl shadow-lg border border-neutral-border hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center opacity-0 animate-fade-in-up animate-delay-400">
-                    <div class="w-20 h-20 mb-4 rounded-full bg-primary flex items-center justify-center text-white text-4xl shadow-md border-2 border-primary-light">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Cloud Solutions</h3>
-                    <p class="text-neutral-medium text-center">Leverage the power of cloud computing for scalable infrastructure, data management, and secure application deployment with AWS, Azure, GCP.</p>
-                </div>
-                <div class="bg-neutral-white p-6 rounded-xl shadow-lg border border-neutral-border hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center opacity-0 animate-fade-in-up animate-delay-500">
-                    <div class="w-20 h-20 mb-4 rounded-full bg-primary flex items-center justify-center text-white text-4xl shadow-md border-2 border-primary-light">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Cloud Hosting</h3>
-                    <p class="text-neutral-medium text-center">Fast, secure, and reliable hosting solutions for your websites and applications, ensuring maximum uptime and performance.</p>
-                </div>
-                <!-- Adding two more service boxes for balance and future expansion -->
-                <div class="bg-neutral-white p-6 rounded-xl shadow-lg border border-neutral-border hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center opacity-0 animate-fade-in-up animate-delay-600">
-                    <div class="w-20 h-20 mb-4 rounded-full bg-primary flex items-center justify-center text-white text-4xl shadow-md border-2 border-primary-light">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Mobile App Development</h3>
-                    <p class="text-neutral-medium text-center">Creating intuitive and high-performing mobile applications for iOS and Android, bringing your ideas to users' fingertips.</p>
-                </div>
-                <div class="bg-neutral-white p-6 rounded-xl shadow-lg border border-neutral-border hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center opacity-0 animate-fade-in-up animate-delay-700">
-                    <div class="w-20 h-20 mb-4 rounded-full bg-primary flex items-center justify-center text-white text-4xl shadow-md border-2 border-primary-light">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">SEO & Digital Marketing</h3>
-                    <p class="text-neutral-medium text-center">Boost your online visibility and reach your target audience through effective SEO strategies and comprehensive digital marketing campaigns.</p>
-                </div>
-                 <div class="bg-neutral-white p-6 rounded-xl shadow-lg border border-neutral-border hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center opacity-0 animate-fade-in-up animate-delay-800">
-                    <div class="w-20 h-20 mb-4 rounded-full bg-primary flex items-center justify-center text-white text-4xl shadow-md border-2 border-primary-light">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Cybersecurity Consulting</h3>
-                    <p class="text-neutral-medium text-center">Protect your digital assets with our cybersecurity expertise, offering vulnerability assessments, penetration testing, and robust security solutions.</p>
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Stories. Ideas. Visualized.</h1>
+                <p>Join a journey through worlds imagined and realities explored.</p>
+                <div class="hero-actions">
+                    <button class="watch-video-btn">
+                        <i class="fas fa-play"></i> Watch Latest Video
+                    </button>
+                    <button class="explore-books-btn">
+                        Explore Books <i class="fas fa-book"></i>
+                    </button>
                 </div>
             </div>
-            <a href="#connect-demo" class="mt-12 inline-flex items-center px-8 py-3 border-2 border-primary rounded-lg text-primary font-bold hover:bg-primary-light hover:text-neutral-white transition-colors transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary-light">
-                Request a Quote <i class="fas fa-arrow-right ml-3"></i>
-            </a>
-        </div>
-    </section>
+            
+            <div class="hero-video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    title="Latest Video">
+                </iframe>
+            </div>
+        </section>
 
-    <section id="trust-builder" class="py-16 md:py-24 bg-neutral-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold font-heading text-neutral-dark text-center mb-12">Why Choose NextEdge Solutions as Your Tech Partner?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                <div class="bg-neutral-light p-6 rounded-xl shadow-md text-center group border border-neutral-border hover:shadow-lg transition-all duration-300 ease-in-out">
-                    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-primary text-neutral-white text-3xl font-bold mx-auto mb-4 group-hover-glow transition-all duration-300 ease-in-out">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Innovative Solutions</h3>
-                    <p class="text-neutral-medium">We deliver creative and future-proof digital solutions that set you apart from the competition.</p>
+        <section class="explore-work">
+            <h2>Explore My Work</h2>
+            <div class="card-container">
+                <div class="work-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>My Books</h3>
+                    <p>Fiction & Non-Fiction</p>
                 </div>
-                <div class="bg-neutral-light p-6 rounded-xl shadow-md text-center group border border-neutral-border hover:shadow-lg transition-all duration-300 ease-in-out">
-                    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-primary text-neutral-white text-3xl font-bold mx-auto mb-4 group-hover-glow transition-all duration-300 ease-in-out">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Client-Centric Approach</h3>
-                    <p class="text-neutral-medium">Your success is our priority. We work closely with you to understand your goals and deliver bespoke results.</p>
+                <div class="work-card">
+                    <i class="far fa-lightbulb"></i>
+                    <h3>My View</h3>
+                    <p>Essays & Opinions</p>
                 </div>
-                <div class="bg-neutral-light p-6 rounded-xl shadow-md text-center group border border-neutral-border hover:shadow-lg transition-all duration-300 ease-in-out">
-                    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-primary text-neutral-white text-3xl font-bold mx-auto mb-4 group-hover-glow transition-all duration-300 ease-in-out">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Technical Expertise</h3>
-                    <p class="text-neutral-medium">Our team comprises highly skilled developers and cloud architects proficient in the latest technologies.</p>
-                </div>
-                <div class="bg-neutral-light p-6 rounded-xl shadow-md text-center group border border-neutral-border hover:shadow-lg transition-all duration-300 ease-in-out">
-                    <div class="flex items-center justify-center w-16 h-16 rounded-full bg-primary text-neutral-white text-3xl font-bold mx-auto mb-4 group-hover-glow transition-all duration-300 ease-in-out">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-heading text-primary mb-2">Reliability & Security</h3>
-                    <p class="text-neutral-medium">We build secure, robust, and reliable solutions, ensuring your data and applications are always protected.</p>
+                <div class="work-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Work/Videos</h3>
+                    <p>Latest on YouTube</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="success-stories-carousel" class="py-16 md:py-24 bg-neutral-light">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold font-heading text-neutral-dark text-center mb-12">Our Recent Case Studies</h2>
-            <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6 pb-4 no-scrollbar">
-                <div class="flex-shrink-0 snap-start w-[calc(100vw-3rem)] sm:w-80 rounded-lg overflow-hidden shadow-lg border border-neutral-border hover:shadow-xl transition-shadow duration-300">
-                    <img src="https://placehold.co/320x240/1A3350/FDFDFD/png?text=E-commerce+Platform" alt="E-commerce Platform Project" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-white">
-                        <p class="text-primary font-semibold">E-commerce Platform for Retailer X</p>
-                        <p class="text-sm text-neutral-medium">Developed a scalable e-commerce site, boosting sales by 40%.</p>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 snap-start w-[calc(100vw-3rem)] sm:w-80 rounded-lg overflow-hidden shadow-lg border border-neutral-border hover:shadow-xl transition-shadow duration-300">
-                    <img src="https://placehold.co/320x240/DAA520/FDFDFD/png?text=Cloud+Migration" alt="Cloud Migration Project" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-white">
-                        <p class="text-primary font-semibold">Cloud Migration for SaaS Startup</p>
-                        <p class="text-sm text-neutral-medium">Migrated existing infrastructure to AWS, improving efficiency.</p>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 snap-start w-[calc(100vw-3rem)] sm:w-80 rounded-lg overflow-hidden shadow-lg border border-neutral-border hover:shadow-xl transition-shadow duration-300">
-                    <img src="https://placehold.co/320x240/1A3350/FDFDFD/png?text=Custom+Web+App" alt="Custom Web Application Project" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-white">
-                        <p class="text-primary font-semibold">Custom CRM Web Application</p>
-                        <p class="text-sm text-neutral-medium">Designed and built a tailored CRM for a service-based business.</p>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 snap-start w-[calc(100vw-3rem)] sm:w-80 rounded-lg overflow-hidden shadow-lg border border-neutral-border hover:shadow-xl transition-shadow duration-300">
-                    <img src="https://placehold.co/320x240/DAA520/FDFDFD/png?text=Secure+Hosting" alt="Secure Hosting Solution" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-white">
-                        <p class="text-primary font-semibold">High-Performance Hosting for Blog</p>
-                        <p class="text-sm text-neutral-medium">Implemented secure and fast cloud hosting for a popular blog.</p>
-                    </div>
-                </div>
-                 <div class="flex-shrink-0 snap-start w-[calc(100vw-3rem)] sm:w-80 rounded-lg overflow-hidden shadow-lg border border-neutral-border hover:shadow-xl transition-shadow duration-300">
-                    <img src="https://placehold.co/320x240/1A3350/FDFDFD/png?text=Mobile+App+Launch" alt="Mobile App Launch Project" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-white">
-                        <p class="text-primary font-semibold">Launch of Mobile App for Fitness</p>
-                        <p class="text-sm text-neutral-medium">Developed and launched a cross-platform fitness tracking app.</p>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 snap-start w-[calc(100vw-3rem)] sm:w-80 rounded-lg overflow-hidden shadow-lg border border-neutral-border hover:shadow-xl transition-shadow duration-300">
-                    <img src="https://placehold.co/320x240/DAA520/FDFDFD/png?text=SaaS+Infrastructure" alt="SaaS Infrastructure Setup" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-white">
-                        <p class="text-primary font-semibold">Scalable SaaS Backend Setup</p>
-                        <p class="text-sm text-neutral-medium">Designed and deployed robust cloud infrastructure for a new SaaS product.</p>
-                    </div>
-                </div>
-            </div>
-            <p class="text-center text-neutral-medium mt-4">Scroll to see more case studies!</p>
-        </div>
-    </section>
-
-    <section id="connect-demo" class="py-16 md:py-24 bg-gradient-to-br from-primary-dark to-primary text-neutral-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold font-heading text-center mb-12">Ready to Grow Your Digital Footprint? Contact Us!</h2>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-neutral-white text-neutral-dark p-8 rounded-xl shadow-xl border-2 border-neutral-border hover:border-accent hover:ring-4 hover:ring-accent-light hover:ring-opacity-50 transition-all duration-300 ease-in-out flex flex-col justify-center">
-                    <h3 class="text-2xl font-bold font-heading text-primary mb-6 text-center">Get In Touch Directly</h3>
-                    <p class="flex items-start mb-4 text-lg">
-                        <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                        <strong>Address:</strong>Shivaji Nagar, Wardha, Maharashtra 442001
-                    </p>
-                    <p class="flex items-start mb-4 text-lg">
-                        <i class="fas fa-phone-alt text-accent mt-1 mr-3"></i>
-                        <strong>Phone:</strong> <a href="tel:+919876543210" class="text-primary hover:underline">+91 8698313370</a>
-                    </p>
-                    <p class="flex items-start mb-4 text-lg">
-                        <i class="fas fa-envelope text-accent mt-1 mr-3"></i>
-                        <strong>Email:</strong> <a href="mailto:info@nextedgesolutions.com" class="text-primary hover:underline">info@nextedgesolutions.com</a>
-                    </p>
-                    <p class="flex items-start mb-4 text-lg">
-                        <i class="fas fa-clock text-accent mt-1 mr-3"></i>
-                        <strong>Hours:</strong> Mon-Fri: 09:00 AM - 06:00 PM, Saturday-Sunday: Closed
-                    </p>
-                    <a href="https://wa.me/918698313370?text=Hello%2C%20I%27m%20interested%20in%20your%20web%20development%20services!" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-accent rounded-lg shadow-md hover:bg-accent-dark text-neutral-white font-bold text-lg mt-6 transform hover:scale-105 transition-colors focus:outline-none focus:ring-4 focus:ring-accent-light btn-gradient-accent">
-                        <i class="fab fa-whatsapp text-2xl mr-3"></i> Chat on WhatsApp
-                    </a>
-                </div>
-
-               <div class="bg-neutral-white rounded-xl shadow-xl overflow-hidden lg:col-span-1 flex flex-col border-2 border-neutral-border hover:border-accent hover:ring-4 hover:ring-accent-light hover:ring-opacity-50 transition-all duration-300 ease-in-out">
-    <h3 class="text-2xl font-bold font-heading text-primary text-center p-6 bg-neutral-light border-b border-neutral-border">
-        Our Office Location
-    </h3>
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d631.0071572470183!2d78.60358690720581!3d20.766338106086746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1751197839347!5m2!1sen!2sin" 
-        width="100%" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade" 
-        title="Location of NextEdge Solutions in Wardha" 
-        class="min-h-[300px] lg:min-h-full flex-grow">
-    </iframe>
-</div>
-
-
-                <div class="bg-neutral-white text-neutral-dark p-8 rounded-xl shadow-xl border-2 border-neutral-border hover:border-accent hover:ring-4 hover:ring-accent-light hover:ring-opacity-50 transition-all duration-300 ease-in-out">
-                    <h3 class="text-2xl font-bold font-heading text-primary mb-6 text-center">Inquire About Our Services</h3>
-                    <form id="service-inquiry-form">
-                        <div class="mb-4">
-                            <label for="inquiry-name" class="block text-neutral-dark text-md font-semibold mb-2">Your Full Name:</label>
-                            <input type="text" id="inquiry-name" name="name" required placeholder="e.g., Jane Smith" aria-label="Full Name"
-                                class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                        </div>
-                        <div class="mb-4">
-                            <label for="inquiry-company" class="block text-neutral-dark text-md font-semibold mb-2">Company Name (Optional):</label>
-                            <input type="text" id="inquiry-company" name="company" placeholder="e.g., My Business Inc." aria-label="Company Name"
-                                class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                        </div>
-                        <div class="mb-4">
-                            <label for="inquiry-email" class="block text-neutral-dark text-md font-semibold mb-2">Email Address:</label>
-                            <input type="email" id="inquiry-email" name="email" required placeholder="e.g., your@example.com" aria-label="Email Address"
-                                class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                        </div>
-                        <div class="mb-4">
-                            <label for="inquiry-service" class="block text-neutral-dark text-md font-semibold mb-2">Interested Service(s):</label>
-                            <select id="inquiry-service" name="service" required aria-label="Interested Service"
-                                class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                                <option value="">-- Select Service --</option>
-                                <option value="Web Development">Web Development</option>
-                                <option value="Cloud Solutions">Cloud Solutions</option>
-                                <option value="Cloud Hosting">Cloud Hosting</option>
-                                <option value="Mobile App Development">Mobile App Development</option>
-                                <option value="SEO & Digital Marketing">SEO & Digital Marketing</option>
-                                <option value="Cybersecurity Consulting">Cybersecurity Consulting</option>
-                                <option value="Other">Other (Please specify in message)</option>
-                            </select>
-                        </div>
-                        <div class="mb-6">
-                            <label for="inquiry-message" class="block text-neutral-dark text-md font-semibold mb-2">Your Message:</label>
-                            <textarea id="inquiry-message" name="message" rows="4" placeholder="Tell us about your project or needs..." aria-label="Your Message"
-                                class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200"></textarea>
-                        </div>
-                        <button type="submit" class="w-full px-6 py-3 bg-primary rounded-lg shadow-lg hover:bg-primary-dark text-neutral-white font-bold text-lg transform hover:scale-105 transition-colors focus:outline-none focus:ring-4 focus:ring-primary-light btn-gradient-primary">
-                            Send Inquiry <i class="fas fa-paper-plane ml-2"></i>
-                        </button>
-                    </form>
-                    <div id="inquiry-form-message" class="hidden mt-6 p-4 rounded-md text-center font-semibold" role="status" aria-live="polite"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-primary-dark text-neutral-light py-8 shadow-inner">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
-            <p class="text-sm">© 2025 NextEdge Solutions. All rights reserved.</p>
-            <ul class="flex flex-wrap justify-center md:justify-end space-x-6">
-                <li><a href="https://www.linkedin.com/company/nextedge-solutions" target="_blank" class="text-neutral-light hover:text-accent transition-colors text-sm" aria-label="Our LinkedIn Page"><i class="fab fa-linkedin-in mr-1"></i> LinkedIn</a></li>
-                <li><a href="https://www.twitter.com/nextedgesolutions" target="_blank" class="text-neutral-light hover:text-accent transition-colors text-sm" aria-label="Our Twitter Page"><i class="fab fa-twitter mr-1"></i> Twitter</a></li>
-                <li><a href="#about-us" class="text-neutral-light hover:text-accent transition-colors text-sm" aria-label="About Us">About Us</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <div id="popup-modal" class="modal fixed inset-0 bg-black bg-opacity-70 z-[1000] items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
-        <div class="modal-content-animate bg-neutral-white p-8 rounded-xl shadow-2xl relative w-full max-w-lg border border-neutral-border">
-            <button class="close-button absolute top-4 right-4 text-neutral-medium text-4xl font-light hover:text-neutral-dark transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-border" role="button" aria-label="Close dialog">
-                ×
-            </button>
-            <div class="text-center mb-6">
-                <h2 id="modal-title" class="text-3xl font-bold font-heading text-primary mb-2">Start Your Digital Journey!</h2>
-                <p class="text-neutral-medium text-lg">Fill out the form for a <span class="text-accent">Free Consultation</span> on your project.</p>
-            </div>
-            <form id="popup-lead-form">
-                <div class="mb-4">
-                    <label for="popup-name" class="block text-neutral-dark text-md font-semibold mb-2">Your Full Name:</label>
-                    <input type="text" id="popup-name" name="name" required placeholder="e.g., Alex Johnson" aria-label="Full Name"
-                        class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                </div>
-                <div class="mb-4">
-                    <label for="popup-email" class="block text-neutral-dark text-md font-semibold mb-2">Email Address:</label>
-                    <input type="email" id="popup-email" name="email" required placeholder="e.g., alex.johnson@example.com" aria-label="Email Address"
-                        class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                </div>
-                <div class="mb-4">
-                    <label for="popup-phone" class="block text-neutral-dark text-md font-semibold mb-2">Phone Number:</label>
-                    <input type="tel" id="popup-phone" name="phone" placeholder="e.g., +919876543210" pattern="[0-9]{10,15}" title="Please enter a valid phone number" aria-label="Phone Number"
-                        class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                </div>
-                <div class="mb-6">
-                    <label for="popup-interest" class="block text-neutral-dark text-md font-semibold mb-2">Interested In:</label>
-                    <select id="popup-interest" name="interest" required aria-label="Interested Service"
-                        class="w-full px-4 py-2 border border-neutral-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent-light transition-colors duration-200">
-                        <option value="">-- Select Service --</option>
-                        <option value="Web Development">Web Development</option>
-                        <option value="Cloud Solutions">Cloud Solutions</option>
-                        <option value="Cloud Hosting">Cloud Hosting</option>
-                        <option value="Mobile App Development">Mobile App Development</option>
-                        <option value="SEO & Digital Marketing">SEO & Digital Marketing</option>
-                        <option value="Cybersecurity Consulting">Cybersecurity Consulting</option>
-                        <option value="General Inquiry">General Inquiry</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full px-6 py-3 bg-primary rounded-lg shadow-lg hover:bg-primary-dark text-neutral-white font-bold text-lg transform hover:scale-105 transition-colors focus:outline-none focus:ring-4 focus:ring-primary-light btn-gradient-primary">
-                    Request Consultation <i class="fas fa-headset ml-2"></i>
-                </button>
-            </form>
-            <div id="popup-form-message" class="hidden mt-6 p-4 rounded-md text-center font-semibold" role="status" aria-live="polite"></div>
-        </div>
-    </div>
-
-    <a href="https://wa.me/918698313370?text=Hello%2C%20I%27m%20interested%20in%20your%20digital%20services." target="_blank"
-        class="fixed bottom-8 right-8 bg-accent-dark w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-neutral-white text-3xl hover:bg-accent transform hover:scale-110 transition-transform z-40" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+        </section>
+    </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Mobile Menu Logic ---
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
+            // 1. Smooth Fade-In Effect for Page Content
+            const elementsToFade = [
+                document.querySelector('.navbar'),
+                document.querySelector('.hero-content'),
+                document.querySelector('.hero-video-container'), 
+                document.querySelector('.explore-work')
+            ];
 
-            menuToggle.addEventListener('click', () => {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                mainNav.classList.toggle('hidden', isExpanded);
-                mainNav.classList.toggle('flex', !isExpanded);
-                // Optional: Add/remove classes to animate hamburger icon
-                menuToggle.children[0].classList.toggle('rotate-45', !isExpanded);
-                menuToggle.children[0].classList.toggle('translate-y-2', !isExpanded);
-                menuToggle.children[1].classList.toggle('opacity-0', !isExpanded);
-                menuToggle.children[2].classList.toggle('-rotate-45', !isExpanded);
-                menuToggle.children[2].classList.toggle('-translate-y-2', !isExpanded);
-            });
-
-            // Close mobile menu when a nav link is clicked
-            mainNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (!mainNav.classList.contains('hidden') && window.innerWidth < 1024) { // Only close if menu is open and on mobile
-                        menuToggle.click(); // Simulate click to close and reset hamburger
-                    }
-                });
-            });
-
-
-            // --- Pop-up Modal Logic ---
-            const openPopupBtn = document.getElementById('open-popup-btn');
-            const popupModal = document.getElementById('popup-modal');
-            const closePopupBtn = popupModal.querySelector('.close-button');
-
-            openPopupBtn.addEventListener('click', () => {
-                popupModal.classList.add('active'); // Use 'active' class for flex display and animation
-                popupModal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling background
-            });
-
-            closePopupBtn.addEventListener('click', () => {
-                popupModal.classList.remove('active');
-                popupModal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = ''; // Restore scrolling
-            });
-
-            // Close modal when clicking outside the content
-            popupModal.addEventListener('click', (e) => {
-                if (e.target === popupModal) {
-                    popupModal.classList.remove('active');
-                    popupModal.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Close modal with ESC key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && popupModal.classList.contains('active')) {
-                    popupModal.classList.remove('active');
-                    popupModal.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // --- Formspree Submission Logic for Service Inquiry Form ---
-            const serviceInquiryForm = document.getElementById('service-inquiry-form');
-            const inquiryFormMessage = document.getElementById('inquiry-form-message');
-
-            serviceInquiryForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); // Prevent default form submission
-
-                const formData = new FormData(serviceInquiryForm);
-                const object = Object.fromEntries(formData);
-                const json = JSON.stringify(object);
-
-                try {
-                    // !!! IMPORTANT: REPLACE 'https://formspree.io/f/mqabdgvp' with your actual Formspree endpoint !!!
-                    const response = await fetch('https://formspree.io/f/mqabdgvp', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: json
-                    });
-
-                    if (response.ok) {
-                        inquiryFormMessage.textContent = 'Your inquiry has been sent successfully! We will contact you shortly.';
-                        inquiryFormMessage.classList.remove('hidden');
-                        inquiryFormMessage.classList.remove('bg-red-100', 'text-red-800');
-                        inquiryFormMessage.classList.add('bg-green-100', 'text-green-800');
-                        serviceInquiryForm.reset(); // Clear the form
-                    } else {
-                        const errorData = await response.json();
-                        inquiryFormMessage.textContent = `Failed to send inquiry: ${errorData.message || 'Please try again.'}`;
-                        inquiryFormMessage.classList.remove('hidden');
-                        inquiryFormMessage.classList.remove('bg-green-100', 'text-red-800');
-                        inquiryFormMessage.classList.add('bg-red-100', 'text-red-800');
-                    }
-                } catch (error) {
-                    console.error('Submission error:', error);
-                    inquiryFormMessage.textContent = 'An error occurred. Please check your internet connection and try again.';
-                    inquiryFormMessage.classList.remove('hidden');
-                    inquiryFormMessage.classList.remove('bg-green-100', 'text-green-800');
-                    inquiryFormMessage.classList.add('bg-red-100', 'text-red-800');
-                }
-            });
-
-            // --- Formspree Submission Logic for Pop-up Lead Form ---
-            const popupLeadForm = document.getElementById('popup-lead-form');
-            const popupFormMessage = document.getElementById('popup-form-message');
-
-            popupLeadForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); // Prevent default form submission
-
-                const formData = new FormData(popupLeadForm);
-                const object = Object.fromEntries(formData);
-                const json = JSON.stringify(object);
-
-                try {
-                    // !!! IMPORTANT: REPLACE 'https://formspree.io/f/xkgbvpdp' with your actual Formspree endpoint !!!
-                    const response = await fetch('https://formspree.io/f/xkgbvpdp', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: json
-                    });
-
-                    if (response.ok) {
-                        popupFormMessage.textContent = 'Your consultation request has been sent successfully! We will contact you shortly.';
-                        popupFormMessage.classList.remove('hidden');
-                        popupFormMessage.classList.remove('bg-red-100', 'text-red-800');
-                        popupFormMessage.classList.add('bg-green-100', 'text-green-800');
-                        popupLeadForm.reset(); // Clear the form
-                        // Optionally close the modal after successful submission
-                        // popupModal.classList.remove('active');
-                        // document.body.style.overflow = '';
-                    } else {
-                        const errorData = await response.json();
-                        popupFormMessage.textContent = `Failed to send request: ${errorData.message || 'Please try again.'}`;
-                        popupFormMessage.classList.remove('hidden');
-                        popupFormMessage.classList.remove('bg-green-100', 'text-green-800');
-                        popupFormMessage.classList.add('bg-red-100', 'text-red-800');
-                    }
-                } catch (error) {
-                    console.error('Submission error:', error);
-                    popupFormMessage.textContent = 'An error occurred. Please check your internet connection and try again.';
-                    popupFormMessage.classList.remove('hidden');
-                    popupFormMessage.classList.remove('bg-green-100', 'text-green-800');
-                    popupFormMessage.classList.add('bg-red-100', 'text-red-800');
+            elementsToFade.forEach((element, index) => {
+                if (element) {
+                    // Apply initial hidden state and set a staggered delay
+                    element.classList.add('loading-fade');
+                    element.style.transitionDelay = `${index * 0.2}s`;
+                    
+                    // Trigger the 'loaded' class to start the transition
+                    setTimeout(() => {
+                        element.classList.add('loaded');
+                    }, 50); // Small timeout to ensure CSS registers the initial state
                 }
             });
         });
