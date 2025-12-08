@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Speaks - Stories. Ideas. Visualized.</title>
+    <title>Jane Doe - Stories. Ideas. Visualized.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -14,6 +14,7 @@
             --background-color: #1a1a1a; /* Dark background color */
             --text-color: #f0f0f0; /* Light text color */
             --font-family: 'Arial', sans-serif;
+            --nav-height: 80px; /* Define a variable for the navbar height */
         }
 
         * {
@@ -27,16 +28,39 @@
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 0 4%; /* Add horizontal padding for the main content area */
+            /* Remove horizontal padding from body since we'll apply it to a container/wrapper */
         }
+
+        /* ---------------------------------------------------- */
+        /* ADDED: Wrapper for consistent horizontal padding (required for fixed nav) */
+        main {
+            padding: 0 4%;
+        }
+
+        /* NEW: Creates space below the fixed navbar */
+        .content-spacer {
+            height: var(--nav-height); 
+            width: 100%;
+        }
+        /* ---------------------------------------------------- */
+
 
         /* 2. Header (Navigation Bar) Styling */
         .navbar {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding: 20px 0;
+            padding: 20px 4%; /* Added horizontal padding back here */
+            height: var(--nav-height); 
             border-bottom: 1px solid #2a2a2a;
+            width: 100%;
+            z-index: 1000; /* Ensure it stays on top of other content */
+
+            /* --- MODIFIED: STICKY NAVIGATION --- */
+            position: fixed; 
+            top: 0;
+            background-color: var(--background-color); /* Ensure background is solid when scrolling */
+            /* ----------------------------------- */
         }
 
         .logo {
@@ -151,16 +175,12 @@
         .hero-video-container {
             flex: 1;
             max-width: 50%;
-            /* Maintain 16:9 aspect ratio */
             position: relative;
             padding-bottom: 28.125%; 
             height: 0; 
             overflow: hidden;
             border-radius: 10px;
-            
-            /* --- MODIFIED: ADDED ORANGE BORDER --- */
             border: 3px solid var(--primary-color); 
-            /* ------------------------------------- */
         }
 
         .hero-video-container iframe {
@@ -241,22 +261,26 @@
             .nav-links a {
                 margin-left: 15px;
             }
-            /* Adjust video container padding for smaller desktop/tablet sizes */
             .hero-video-container {
                 padding-bottom: calc(50% * 0.5625);
             }
         }
         
         @media (max-width: 768px) {
-            body {
-                padding: 0 5%;
-            }
-
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
                 padding-bottom: 10px;
+                /* Reset height for stacked mobile navigation */
+                height: auto; 
             }
+
+            /* Adjust the content spacer height for the new dynamic mobile navbar height */
+            .content-spacer {
+                /* Use a slightly larger estimate for the stacked mobile nav height */
+                height: 120px; 
+            }
+
 
             .nav-links {
                 margin-top: 15px;
@@ -330,6 +354,8 @@
         </nav>
     </header>
 
+    <div class="content-spacer"></div>
+
     <main>
         <section class="hero-section">
             <div class="hero-content">
@@ -382,7 +408,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // 1. Smooth Fade-In Effect for Page Content
             const elementsToFade = [
-                document.querySelector('.navbar'),
+                // document.querySelector('.navbar'), /* Removed navbar from fade since it's fixed */
                 document.querySelector('.hero-content'),
                 document.querySelector('.hero-video-container'), 
                 document.querySelector('.explore-work')
@@ -404,4 +430,3 @@
     </script>
 </body>
 </html>
-
