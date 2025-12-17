@@ -9,11 +9,11 @@
     <style>
         /* 1. Global Reset and Variables */
         :root {
-            --primary-color: #ff4500; 
-            --secondary-color: #2e2e2e; 
-            --background-color: #1a1a1a; 
-            --text-color: #f0f0f0; 
-            --light-text: #b0b0b0; 
+            --primary-color: #ff4500; /* Deep Orange Red for emphasis */
+            --secondary-color: #2e2e2e; /* Darker background for modules */
+            --background-color: #1a1a1a; /* Main dark background color */
+            --text-color: #f0f0f0; /* Light text color */
+            --light-text: #b0b0b0; /* Muted text color for subheadings/metadata */
             --nav-height: 80px;
             --top-strip-height: 30px; 
         }
@@ -36,6 +36,7 @@
             padding: 0 4%;
         }
 
+        /* NEW: Breaking News/Top Strip */
         .top-strip {
             position: fixed;
             top: 0;
@@ -72,12 +73,12 @@
             width: 100%;
         }
 
-        /* 2. Header (Navigation Bar) Styling */
+        /* 2. Header (Navigation Bar) Styling - STICKY */
         .navbar {
             display: flex;
-            justify-content: space-between; /* Changed to space-between for hamburger */
+            justify-content: flex-start;
             align-items: center;
-            padding: 0 4%;
+            padding: 20px 4%;
             height: var(--nav-height); 
             border-bottom: 1px solid #2a2a2a;
             width: 100%;
@@ -125,19 +126,8 @@
             text-transform: uppercase;
         }
 
-        /* HAMBURGER STYLING */
-        .hamburger {
-            display: none; /* Hidden on desktop */
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            background: none;
-            border: none;
-        }
-
         .nav-links {
             margin-left: auto;
-            display: flex;
         }
 
         .nav-links a {
@@ -157,7 +147,7 @@
             border-bottom: 2px solid var(--primary-color);
         }
 
-        /* 3. Hero Section */
+        /* 3. Hero Section (Feature Story) */
         .hero-section {
             display: flex;
             justify-content: space-between;
@@ -167,12 +157,43 @@
             border-bottom: 1px solid #2a2a2a;
         }
         
-        .hero-tag { font-size: 0.8rem; font-weight: bold; color: var(--primary-color); text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .hero-content { flex: 1; max-width: 50%; }
-        .hero-content h1 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; line-height: 1.1; }
-        .hero-content p { font-size: 1.1rem; color: var(--light-text); margin-bottom: 20px; }
-        .hero-metadata { font-size: 0.9rem; color: var(--light-text); opacity: 0.7; margin-bottom: 40px; }
-        .hero-metadata strong { color: var(--text-color); font-weight: normal; }
+        .hero-tag {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+        
+        .hero-metadata {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+        .hero-metadata strong {
+            color: var(--text-color);
+            font-weight: normal;
+        }
 
         .hero-actions button {
             padding: 10px 20px;
@@ -185,8 +206,11 @@
             transition: background-color 0.3s;
         }
         
-        .hero-actions button:hover { background-color: #ff6a1f; }
+        .hero-actions button:hover {
+            background-color: #ff6a1f;
+        }
 
+        /* Video/Feature Media */
         .hero-video-container {
             flex: 1;
             max-width: 50%;
@@ -199,13 +223,31 @@
             border: 3px solid var(--primary-color); 
         }
 
-        .hero-video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .hero-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-        /* 4. MAIN CONTENT GRID */
-        .main-content-grid { display: flex; padding: 50px 0 80px 0; gap: 40px; }
-        .main-articles { flex: 3; }
-        .sidebar { flex: 1.5; min-width: 300px; }
+        /* 4. MAIN CONTENT GRID (EDITORIAL LAYOUT) */
+        .main-content-grid {
+            display: flex;
+            padding: 50px 0 80px 0;
+            gap: 40px;
+        }
 
+        .main-articles {
+            flex: 3;
+        }
+
+        .sidebar {
+            flex: 1.5;
+            min-width: 300px;
+        }
+
+        /* ARTICLE LIST STYLING */
         .article-list h2, .sidebar-module h3 {
             font-size: 1.5rem;
             margin-bottom: 25px;
@@ -215,6 +257,7 @@
             line-height: 1;
         }
         
+        /* New Must Read Module Styling */
         .must-read-module {
             background-color: var(--secondary-color);
             padding: 25px;
@@ -222,70 +265,210 @@
             border-radius: 5px;
             border: 1px solid #383838;
         }
-        .must-read-module h2 { font-size: 1.2rem; border-image: none; border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 15px; color: var(--primary-color); }
+        .must-read-module h2 {
+            font-size: 1.2rem;
+            border-image: none;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
 
-        .article-card { padding: 20px 0; border-bottom: 1px solid #2a2a2a; cursor: pointer; transition: background-color 0.2s, padding-left 0.2s; }
-        .article-card:hover { background-color: #222; padding-left: 15px; }
-        .article-card:hover h3 { color: var(--primary-color); }
-        .article-card:last-child { border-bottom: none; }
-        .article-card h3 { font-size: 1.3rem; margin-bottom: 5px; transition: color 0.2s; }
-        .article-card p.metadata { font-size: 0.8rem; color: var(--light-text); margin-bottom: 5px; }
-        .article-card p.metadata .author { color: var(--primary-color); font-weight: bold; }
-        .article-card p.summary { font-size: 1rem; color: var(--light-text); }
-
-        .sidebar-module { background-color: var(--secondary-color); padding: 20px; border-radius: 5px; margin-bottom: 30px; }
-        .trending-list { list-style: none; }
-        .trending-list li { padding: 10px 0; border-bottom: 1px dashed #444; }
-        .trending-list li a { color: var(--text-color); text-decoration: none; font-weight: 500; }
-        .trending-list li a:hover { color: var(--primary-color); }
-
-        .video-module-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 15px; }
-        .video-module-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        .video-module-caption { font-size: 0.9rem; color: var(--light-text); text-align: center; }
-
-        footer { background-color: #111; color: var(--light-text); padding: 40px 4%; text-align: center; border-top: 1px solid #2a2a2a; }
-        .footer-links a { color: var(--light-text); margin: 0 15px; text-decoration: none; font-size: 0.9rem; }
-        .footer-links a:hover { color: var(--primary-color); }
-
-        /* ---------------------------------------------------- */
-        /* RESPONSIVE & HAMBURGER LOGIC */
-        /* ---------------------------------------------------- */
-        @media (max-width: 1024px) {
-            .main-content-grid { flex-direction: column; }
-            .main-articles, .sidebar { flex: 1; min-width: auto; }
+        /* General Article Card */
+        .article-card {
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
+            cursor: pointer;
+            transition: background-color 0.2s, padding-left 0.2s;
         }
         
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block; /* Show hamburger button */
-            }
+        .article-card:hover {
+            background-color: #222;
+            padding-left: 15px;
+        }
+        .article-card:hover h3 {
+            color: var(--primary-color);
+        }
 
-            .nav-links {
-                display: none; /* Hide links on mobile */
+        .article-card:last-child {
+            border-bottom: none;
+        }
+
+        .article-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            transition: color 0.2s;
+        }
+        
+        /* Enhanced Metadata */
+        .article-card p.metadata {
+            font-size: 0.8rem;
+            color: var(--light-text);
+            margin-bottom: 5px;
+        }
+        .article-card p.metadata strong {
+            color: var(--text-color);
+            font-weight: normal;
+        }
+        .article-card p.metadata .author {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .article-card p.summary {
+            font-size: 1rem;
+            color: var(--light-text);
+        }
+
+        /* SIDEBAR STYLING */
+        .sidebar-module {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .trending-list {
+            list-style: none;
+        }
+
+        .trending-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #444;
+        }
+
+        .trending-list li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .trending-list li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .trending-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* New Video Module Styling */
+        .video-module-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .video-module-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-module-caption {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            text-align: center;
+        }
+
+
+        /* 5. FOOTER */
+        footer {
+            background-color: #111;
+            color: var(--light-text);
+            padding: 40px 4%;
+            text-align: center;
+            border-top: 1px solid #2a2a2a;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 6. MEDIA QUERIES FOR MOBILE/TABLET RESPONSIVENESS */
+        @media (max-width: 1024px) {
+            .main-content-grid {
                 flex-direction: column;
-                position: absolute;
-                top: var(--nav-height);
-                left: 0;
-                width: 100%;
-                background-color: var(--background-color);
-                border-bottom: 1px solid #2a2a2a;
-                padding: 20px 4%;
+            }
+            .main-articles, .sidebar {
+                flex: 1;
+                min-width: auto;
+            }
+        }
+        
+        /* ---------------------------------------------------- */
+        /* CRITICAL MOBILE FIXES (768px and below) */
+        /* ---------------------------------------------------- */
+        @media (max-width: 768px) {
+            .navbar {
+                height: auto; 
+                top: var(--top-strip-height);
+                flex-direction: column; /* Stack logo and nav links */
+                align-items: flex-start;
+            }
+            
+            /* Make the space at the top account for the stacked nav */
+            .content-spacer {
+                height: calc(120px + var(--top-strip-height)); 
+            }
+            
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap; /* Allows links to wrap if too long */
+                justify-content: flex-start; /* Aligns links to the left */
+                gap: 10px;
+                margin-top: 15px;
                 margin-left: 0;
             }
-
-            .nav-links.active {
-                display: flex; /* Show links when toggled */
-            }
-
             .nav-links a {
-                margin: 10px 0;
-                font-size: 1.1rem;
+                margin-left: 0;
+                margin-right: 5px;
+                font-size: 0.8rem;
+            }
+            
+            .logo-main {
+                font-size: 1.8rem;
+            }
+            
+            /* Force the Hero section to stack vertically */
+            .hero-section {
+                flex-direction: column;
+                padding: 40px 0;
+                gap: 30px;
             }
 
-            .hero-section { flex-direction: column; padding: 40px 0; gap: 30px; }
-            .hero-content, .hero-video-container { max-width: 100%; width: 100%; order: 2; }
-            .hero-video-container { order: 1; padding-bottom: 56.25%; }
-            .hero-content h1 { font-size: 2.2rem; }
+            /* Make Hero Content and Video take 100% width and stack */
+            .hero-content, 
+            .hero-video-container {
+                max-width: 100%;
+                width: 100%;
+                order: 2; /* Put text below the image/video */
+            }
+            .hero-video-container {
+                order: 1; /* Put image/video first */
+            }
+
+            /* FIX: Headline Font Size Reduction */
+            .hero-content h1 {
+                font-size: 2.2rem; 
+                line-height: 1.2;
+            }
+
+            /* FIX: Video Aspect Ratio and Removal of padding-bottom conflict */
+            .hero-video-container {
+                padding-bottom: 56.25%; /* Standard 16:9 ratio */
+                height: 0; /* Ensures padding-bottom handles the height */
+            }
         }
     </style>
 </head>
@@ -300,14 +483,11 @@
             <div class="logo-main">
                 Editorial<span class="logo-x">X</span><span class="logo-suffix">.in</span>
             </div>
-            <span class="logo-subheading">ANALYSIS | PERSPECTIVE | CULTURE</span>
+            <span class="logo-subheading">
+                ANALYSIS | PERSPECTIVE | CULTURE
+            </span>
         </div>
-
-        <button class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <nav class="nav-links" id="nav-menu">
+        <nav class="nav-links">
             <a href="#" class="active">Home</a>
             <a href="#">Tech</a>
             <a href="#">Writing</a>
@@ -323,72 +503,128 @@
             <div class="hero-content">
                 <span class="hero-tag">FEATURED / TECH</span>
                 <h1>The Quantum Leap: Why Every Creator Must Master AI Tools Now</h1>
-                <p>An in-depth analysis of how generative models are reshaping the digital content landscape, from scriptwriting to final renders.</p>
-                <p class="hero-metadata">By <strong class="author">Aditya Giri</strong> | Dec 17, 2025 | 5 min read</p>
+                <p>An in-depth analysis of how generative models are reshaping the digital content landscape, from scriptwriting to final renders. Explore the future of digital creation.</p>
+                
+                <p class="hero-metadata">
+                    By <strong class="author">Aditya Giri</strong> | 
+                    December 17, 2025 | 
+                    5 min read
+                </p>
+                
                 <div class="hero-actions">
-                    <button class="read-more-btn"><i class="fas fa-arrow-right"></i> Read Full Story</button>
+                    <button class="read-more-btn">
+                        <i class="fas fa-arrow-right"></i> Read Full Story
+                    </button>
                 </div>
             </div>
+            
             <div class="hero-video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen title="Featured Editorial Video"></iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    title="Featured Editorial Video">
+                </iframe>
             </div>
         </section>
 
         <div class="main-content-grid">
+            
             <section class="main-articles">
+                
                 <div class="must-read-module">
                     <h2>Must Read</h2>
-                    <div class="article-card"><p class="metadata">OPINION | 3 min read</p><h3>The Hidden Cost of Cloud Computing</h3></div>
-                    <div class="article-card"><p class="metadata">WRITING | 7 min read</p><h3>New Wave of Surrealist Fiction</h3></div>
+                    <div class="article-card" style="border-bottom: 1px solid #444; padding: 10px 0;">
+                        <p class="metadata">OPINION | 3 min read</p>
+                        <h3>The Hidden Cost of Cloud Computing and Sustainability</h3>
+                    </div>
+                    <div class="article-card" style="padding: 10px 0;">
+                        <p class="metadata">WRITING | 7 min read</p>
+                        <h3>Interrogating the New Wave of Surrealist Fiction</h3>
+                    </div>
                 </div>
+                
                 <section class="article-list">
                     <h2>Latest Articles</h2>
+
                     <div class="article-card">
-                        <p class="metadata">WRITING | By <strong class="author">Jane Smith</strong> | 6 min read</p>
-                        <h3>Rediscovering the Classics</h3>
-                        <p class="summary">A look at how classic literary warnings mirror modern societal concerns.</p>
+                        <p class="metadata">WRITING | By <strong class="author">Jane Smith</strong> | DEC 15, 2025 | 6 min read</p>
+                        <h3>Rediscovering the Classics: Why Dystopian Fiction Remains Relevant</h3>
+                        <p class="summary">A look at how classic literary warnings mirror modern societal concerns and political debates.</p>
+                    </div>
+
+                    <div class="article-card">
+                        <p class="metadata">OPINION | By <strong class="author">John Doe</strong> | DEC 14, 2025 | 4 min read</p>
+                        <h3>The Attention Economy: Is Social Media Dumbing Down Creative Depth?</h3>
+                        <p class="summary">Analyzing the trade-offs between viral success and substantive creative output in the digital age.</p>
+                    </div>
+
+                    <div class="article-card">
+                        <p class="metadata">TECH | By <strong class="author">Aditya Giri</strong> | DEC 13, 2025 | 9 min read</p>
+                        <h3>Beyond ChatGPT: A Guide to the Best Emerging Open-Source LLMs</h3>
+                        <p class="summary">We dive into the non-commercial large language models challenging the industry giants.</p>
+                    </div>
+                    
+                    <div class="article-card">
+                        <p class="metadata">WRITING | By <strong class="author">Elara Vance</strong> | DEC 10, 2025 | 5 min read</p>
+                        <h3>The Art of the Silent Film Revival</h3>
+                        <p class="summary">A review of modern directors re-embracing pre-sound aesthetics and storytelling techniques.</p>
                     </div>
                 </section>
+                
             </section>
             
             <aside class="sidebar">
+                
                 <div class="sidebar-module">
                     <h3>Trending Topics</h3>
                     <ul class="trending-list">
                         <li><a href="#">#GenerativeAIEthics</a></li>
                         <li><a href="#">#FutureOfJournalism</a></li>
+                        <li><a href="#">#DigitalNomadLife</a></li>
+                        <li><a href="#">#SciFiHorror</a></li>
+                        <li><a href="#">#LLMOpenSource</a></li>
                     </ul>
                 </div>
+                
                 <div class="sidebar-module">
                     <h3>Watch Now</h3>
-                    <div class="video-module-embed"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
+                    <div class="video-module-embed">
+                        <iframe 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            title="Sidebar Video Feature">
+                        </iframe>
+                    </div>
+                    <p class="video-module-caption">Featured Clip: New Horizons in Sustainable Tech.</p>
                 </div>
+
+                <div class="sidebar-module">
+                    <h3>Explore Sections</h3>
+                    <ul class="trending-list">
+                        <li><a href="#">Tech Deep Dives</a></li>
+                        <li><a href="#">Literary Criticism</a></li>
+                        <li><a href="#">Cultural Debates</a></li>
+                        <li><a href="#">Staff Interviews</a></li>
+                    </ul>
+                </div>
+
             </aside>
+            
         </div>
     </main>
     
     <footer>
-        <p><a href="#" class="footer-links">Contact</a> | <a href="#" class="footer-links">Privacy Policy</a></p>
+        <p>
+            <a href="#" class="footer-links">Contact</a> | 
+            <a href="#" class="footer-links">Privacy Policy</a> | 
+            <a href="#" class="footer-links">Advertise</a> |
+            <a href="#" class="footer-links">Archives</a>
+        </p>
         <p style="margin-top: 10px; font-size: 0.8rem;">&copy; 2025 EditorialX.in. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            
-            // Toggle between 'bars' and 'times' (X) icon
-            const icon = hamburger.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    </script>
 </body>
 </html>
