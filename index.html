@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jane Doe - Stories. Ideas. Visualized.</title>
+    <title>EditorialX.in - Analysis, Perspective, and Culture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         /* 1. Global Reset and Variables */
         :root {
-            --primary-color: #ff8c00; /* Vibrant orange for highlights */
-            --secondary-color: #383838; /* Background for cards/elements */
-            --background-color: #1a1a1a; /* Dark background color */
-            --text-color: #f0f0f0; /* Light text color */
-            --font-family: 'Arial', sans-serif;
-            --nav-height: 80px; /* Define a variable for the navbar height */
+            --primary-color: #ff4500; 
+            --secondary-color: #2e2e2e; 
+            --background-color: #1a1a1a; 
+            --text-color: #f0f0f0; 
+            --light-text: #b0b0b0; 
+            --nav-height: 80px;
+            --top-strip-height: 30px; 
         }
 
         * {
@@ -24,154 +25,168 @@
         }
 
         body {
-            font-family: var(--font-family);
+            font-family: 'Georgia', serif; 
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            /* Remove horizontal padding from body since we'll apply it to a container/wrapper */
+            padding-top: var(--top-strip-height); 
         }
 
-        /* ---------------------------------------------------- */
-        /* ADDED: Wrapper for consistent horizontal padding (required for fixed nav) */
         main {
             padding: 0 4%;
         }
 
-        /* NEW: Creates space below the fixed navbar */
+        .top-strip {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--top-strip-height);
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            padding: 0 4%;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .top-strip-label {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2px 8px;
+            margin-right: 15px;
+        }
+        .top-strip a {
+            color: var(--background-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .top-strip a:hover {
+            opacity: 0.8;
+        }
+
         .content-spacer {
-            height: var(--nav-height); 
+            height: calc(var(--nav-height) + var(--top-strip-height)); 
             width: 100%;
         }
-        /* ---------------------------------------------------- */
-
 
         /* 2. Header (Navigation Bar) Styling */
         .navbar {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between; /* Changed to space-between for hamburger */
             align-items: center;
-            padding: 20px 4%; /* Added horizontal padding back here */
+            padding: 0 4%;
             height: var(--nav-height); 
             border-bottom: 1px solid #2a2a2a;
             width: 100%;
-            z-index: 1000; /* Ensure it stays on top of other content */
-
-            /* --- MODIFIED: STICKY NAVIGATION --- */
+            z-index: 1000;
             position: fixed; 
-            top: 0;
-            background-color: var(--background-color); /* Ensure background is solid when scrolling */
-            /* ----------------------------------- */
+            top: var(--top-strip-height); 
+            background-color: var(--background-color); 
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 2.2rem; 
+            font-weight: 900;
             color: var(--text-color);
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            line-height: 1;
         }
 
         .logo-main {
-            display: flex;
-            align-items: center;
+            font-family: 'Times New Roman', serif;
+            letter-spacing: -1px;
         }
         
-        .logo-subheading {
-            font-size: 0.7rem;
-            font-weight: normal;
-            color: #b0b0b0;
-            margin-top: 2px;
-            letter-spacing: 1px;
+        .logo-main .logo-x {
+            color: var(--primary-color);
+            font-weight: 900;
             text-transform: uppercase;
+        }
+        
+        .logo-main .logo-suffix {
+            font-size: 0.8em;
+            color: var(--light-text);
+            text-transform: lowercase;
+            font-weight: normal;
+            margin-left: 2px;
+        }
+
+        .logo-subheading {
+            font-size: 0.6rem;
+            font-weight: normal;
+            color: var(--light-text);
+            margin-top: 5px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* HAMBURGER STYLING */
+        .hamburger {
+            display: none; /* Hidden on desktop */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            background: none;
+            border: none;
         }
 
         .nav-links {
             margin-left: auto;
+            display: flex;
         }
 
         .nav-links a {
-            color: var(--text-color);
+            color: var(--light-text);
             text-decoration: none;
             margin-left: 25px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             padding: 5px 0;
             transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
         }
 
-        /* 3. Hero Section Styling */
+        /* 3. Hero Section */
         .hero-section {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 80px 0;
+            align-items: flex-start;
+            padding: 80px 0 50px 0;
             gap: 40px;
+            border-bottom: 1px solid #2a2a2a;
         }
-
-        .hero-content {
-            flex: 1;
-            max-width: 50%;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            margin-bottom: 40px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 15px;
-        }
+        
+        .hero-tag { font-size: 0.8rem; font-weight: bold; color: var(--primary-color); text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .hero-content { flex: 1; max-width: 50%; }
+        .hero-content h1 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; line-height: 1.1; }
+        .hero-content p { font-size: 1.1rem; color: var(--light-text); margin-bottom: 20px; }
+        .hero-metadata { font-size: 0.9rem; color: var(--light-text); opacity: 0.7; margin-bottom: 40px; }
+        .hero-metadata strong { color: var(--text-color); font-weight: normal; }
 
         .hero-actions button {
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .watch-video-btn {
-            background: none;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .watch-video-btn:hover {
+            padding: 10px 20px;
             background-color: var(--primary-color);
             color: var(--background-color);
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
+        
+        .hero-actions button:hover { background-color: #ff6a1f; }
 
-        .explore-books-btn {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            border: 2px solid var(--secondary-color);
-        }
-
-        .explore-books-btn:hover {
-            background-color: #505050;
-            border-color: #505050;
-        }
-
-        /* -------------------------- */
-        /* VIDEO SECTION STYLING */
-        /* -------------------------- */
         .hero-video-container {
             flex: 1;
             max-width: 50%;
@@ -179,178 +194,125 @@
             padding-bottom: 28.125%; 
             height: 0; 
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
             border: 3px solid var(--primary-color); 
         }
 
-        .hero-video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+        .hero-video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* 4. Explore My Work Section Styling */
-        .explore-work {
-            padding: 50px 0 100px 0;
-        }
+        /* 4. MAIN CONTENT GRID */
+        .main-content-grid { display: flex; padding: 50px 0 80px 0; gap: 40px; }
+        .main-articles { flex: 3; }
+        .sidebar { flex: 1.5; min-width: 300px; }
 
-        .explore-work h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .card-container {
-            display: flex;
-            gap: 30px;
-            position: relative;
-        }
-
-        .work-card {
-            flex: 1;
-            background-color: #262626;
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid #3a3a3a;
-            transition: border-color 0.3s, background-color 0.3s;
-            text-align: left;
-        }
-
-        .work-card:hover {
-            border-color: var(--primary-color);
-            background-color: #2e2e2e;
-        }
-
-        .work-card i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .work-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .work-card p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-        }
-
-        /* JS-enabled classes for smooth loading effect */
-        .loading-fade {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .loaded {
-            opacity: 1;
-            transform: translateY(0);
+        .article-list h2, .sidebar-module h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(to right, var(--primary-color) 30%, transparent 70%) 1;
+            padding-bottom: 10px;
+            line-height: 1;
         }
         
-        /* ------------------------------------------------------------------ */
-        /* 5. MEDIA QUERIES FOR MOBILE/TABLET RESPONSIVENESS (Max Width: 768px) */
-        /* ------------------------------------------------------------------ */
+        .must-read-module {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            border: 1px solid #383838;
+        }
+        .must-read-module h2 { font-size: 1.2rem; border-image: none; border-bottom: 1px solid #444; padding-bottom: 5px; margin-bottom: 15px; color: var(--primary-color); }
 
+        .article-card { padding: 20px 0; border-bottom: 1px solid #2a2a2a; cursor: pointer; transition: background-color 0.2s, padding-left 0.2s; }
+        .article-card:hover { background-color: #222; padding-left: 15px; }
+        .article-card:hover h3 { color: var(--primary-color); }
+        .article-card:last-child { border-bottom: none; }
+        .article-card h3 { font-size: 1.3rem; margin-bottom: 5px; transition: color 0.2s; }
+        .article-card p.metadata { font-size: 0.8rem; color: var(--light-text); margin-bottom: 5px; }
+        .article-card p.metadata .author { color: var(--primary-color); font-weight: bold; }
+        .article-card p.summary { font-size: 1rem; color: var(--light-text); }
+
+        .sidebar-module { background-color: var(--secondary-color); padding: 20px; border-radius: 5px; margin-bottom: 30px; }
+        .trending-list { list-style: none; }
+        .trending-list li { padding: 10px 0; border-bottom: 1px dashed #444; }
+        .trending-list li a { color: var(--text-color); text-decoration: none; font-weight: 500; }
+        .trending-list li a:hover { color: var(--primary-color); }
+
+        .video-module-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 15px; }
+        .video-module-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-module-caption { font-size: 0.9rem; color: var(--light-text); text-align: center; }
+
+        footer { background-color: #111; color: var(--light-text); padding: 40px 4%; text-align: center; border-top: 1px solid #2a2a2a; }
+        .footer-links a { color: var(--light-text); margin: 0 15px; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--primary-color); }
+
+        /* ---------------------------------------------------- */
+        /* RESPONSIVE & HAMBURGER LOGIC */
+        /* ---------------------------------------------------- */
         @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            .nav-links a {
-                margin-left: 15px;
-            }
-            .hero-video-container {
-                padding-bottom: calc(50% * 0.5625);
-            }
+            .main-content-grid { flex-direction: column; }
+            .main-articles, .sidebar { flex: 1; min-width: auto; }
         }
         
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                padding-bottom: 10px;
-                /* Reset height for stacked mobile navigation */
-                height: auto; 
+            .hamburger {
+                display: block; /* Show hamburger button */
             }
-
-            /* Adjust the content spacer height for the new dynamic mobile navbar height */
-            .content-spacer {
-                /* Use a slightly larger estimate for the stacked mobile nav height */
-                height: 120px; 
-            }
-
 
             .nav-links {
-                margin-top: 15px;
-                margin-left: 0;
-                text-align: left;
+                display: none; /* Hide links on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
                 width: 100%;
+                background-color: var(--background-color);
+                border-bottom: 1px solid #2a2a2a;
+                padding: 20px 4%;
+                margin-left: 0;
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when toggled */
             }
 
             .nav-links a {
-                display: inline-block;
-                margin-left: 0;
-                margin-right: 15px;
-                font-size: 0.9rem;
-            }
-            
-            .hero-section {
-                flex-direction: column;
-                padding: 50px 0;
-                gap: 30px;
+                margin: 10px 0;
+                font-size: 1.1rem;
             }
 
-            .hero-content, .hero-video-container {
-                max-width: 100%;
-            }
-            
-            .hero-content {
-                order: 2;
-            }
-
-            .hero-video-container {
-                order: 1;
-                padding-bottom: 56.25%;
-            }
-
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-            }
-            
-            .card-container {
-                flex-direction: column;
-                gap: 20px;
-            }
+            .hero-section { flex-direction: column; padding: 40px 0; gap: 30px; }
+            .hero-content, .hero-video-container { max-width: 100%; width: 100%; order: 2; }
+            .hero-video-container { order: 1; padding-bottom: 56.25%; }
+            .hero-content h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
+    <div class="top-strip">
+        <span class="top-strip-label">Breaking</span>
+        <a href="#">Exclusive: New Legislation Set to Impact Digital Creator Rights</a>
+    </div>
 
     <header class="navbar">
         <div class="logo">
             <div class="logo-main">
-                ADITYA GIRI
+                Editorial<span class="logo-x">X</span><span class="logo-suffix">.in</span>
             </div>
-            <span class="logo-subheading">
-                TECH | LETERATURE | CREATOR
-            </span>
+            <span class="logo-subheading">ANALYSIS | PERSPECTIVE | CULTURE</span>
         </div>
-        <nav class="nav-links">
+
+        <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links" id="nav-menu">
             <a href="#" class="active">Home</a>
-            <a href="#">Books</a>
-            <a href="#">Press</a>
-            <a href="#">Writings</a>
-            <a href="#">Work/Videos</a>
+            <a href="#">Tech</a>
+            <a href="#">Writing</a>
+            <a href="#">Opinion</a>
+            <a href="#">Staff</a>
         </nav>
     </header>
 
@@ -359,73 +321,73 @@
     <main>
         <section class="hero-section">
             <div class="hero-content">
-                <h1>Stories. Ideas. Visualized.</h1>
-                <p>Join a journey through worlds imagined and realities explored.</p>
+                <span class="hero-tag">FEATURED / TECH</span>
+                <h1>The Quantum Leap: Why Every Creator Must Master AI Tools Now</h1>
+                <p>An in-depth analysis of how generative models are reshaping the digital content landscape, from scriptwriting to final renders.</p>
+                <p class="hero-metadata">By <strong class="author">Aditya Giri</strong> | Dec 17, 2025 | 5 min read</p>
                 <div class="hero-actions">
-                    <button class="watch-video-btn">
-                        <i class="fas fa-play"></i> Watch Latest Video
-                    </button>
-                    <button class="explore-books-btn">
-                        Explore Books <i class="fas fa-book"></i>
-                    </button>
+                    <button class="read-more-btn"><i class="fas fa-arrow-right"></i> Read Full Story</button>
                 </div>
             </div>
-            
             <div class="hero-video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    title="Latest Video">
-                </iframe>
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen title="Featured Editorial Video"></iframe>
             </div>
         </section>
 
-        <section class="explore-work">
-            <h2>Explore My Work</h2>
-            <div class="card-container">
-                <div class="work-card">
-                    <i class="fas fa-book-open"></i>
-                    <h3>My Books</h3>
-                    <p>Fiction & Non-Fiction</p>
+        <div class="main-content-grid">
+            <section class="main-articles">
+                <div class="must-read-module">
+                    <h2>Must Read</h2>
+                    <div class="article-card"><p class="metadata">OPINION | 3 min read</p><h3>The Hidden Cost of Cloud Computing</h3></div>
+                    <div class="article-card"><p class="metadata">WRITING | 7 min read</p><h3>New Wave of Surrealist Fiction</h3></div>
                 </div>
-                <div class="work-card">
-                    <i class="far fa-lightbulb"></i>
-                    <h3>My View</h3>
-                    <p>Essays & Opinions</p>
+                <section class="article-list">
+                    <h2>Latest Articles</h2>
+                    <div class="article-card">
+                        <p class="metadata">WRITING | By <strong class="author">Jane Smith</strong> | 6 min read</p>
+                        <h3>Rediscovering the Classics</h3>
+                        <p class="summary">A look at how classic literary warnings mirror modern societal concerns.</p>
+                    </div>
+                </section>
+            </section>
+            
+            <aside class="sidebar">
+                <div class="sidebar-module">
+                    <h3>Trending Topics</h3>
+                    <ul class="trending-list">
+                        <li><a href="#">#GenerativeAIEthics</a></li>
+                        <li><a href="#">#FutureOfJournalism</a></li>
+                    </ul>
                 </div>
-                <div class="work-card">
-                    <i class="fas fa-video"></i>
-                    <h3>Work/Videos</h3>
-                    <p>Latest on YouTube</p>
+                <div class="sidebar-module">
+                    <h3>Watch Now</h3>
+                    <div class="video-module-embed"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div>
                 </div>
-            </div>
-        </section>
+            </aside>
+        </div>
     </main>
+    
+    <footer>
+        <p><a href="#" class="footer-links">Contact</a> | <a href="#" class="footer-links">Privacy Policy</a></p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">&copy; 2025 EditorialX.in. All Rights Reserved.</p>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Smooth Fade-In Effect for Page Content
-            const elementsToFade = [
-                // document.querySelector('.navbar'), /* Removed navbar from fade since it's fixed */
-                document.querySelector('.hero-content'),
-                document.querySelector('.hero-video-container'), 
-                document.querySelector('.explore-work')
-            ];
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
 
-            elementsToFade.forEach((element, index) => {
-                if (element) {
-                    // Apply initial hidden state and set a staggered delay
-                    element.classList.add('loading-fade');
-                    element.style.transitionDelay = `${index * 0.2}s`;
-                    
-                    // Trigger the 'loaded' class to start the transition
-                    setTimeout(() => {
-                        element.classList.add('loaded');
-                    }, 50); // Small timeout to ensure CSS registers the initial state
-                }
-            });
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Toggle between 'bars' and 'times' (X) icon
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
     </script>
 </body>
