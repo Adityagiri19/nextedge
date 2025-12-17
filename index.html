@@ -3,398 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EditorialX.in - READ | WATCH | THINK</title>
+    <title>EditorialX.in | READ | WATCH | THINK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* 1. Global Reset and Variables */
+        /* ==========================================================================
+           1. CORE VARIABLES & THEME SETTINGS
+           ========================================================================== */
         :root {
-            --primary-color: #ff4500; /* Deep Orange Red for emphasis */
-            --secondary-color: #2e2e2e; /* Darker background for modules */
-            --background-color: #1a1a1a; /* Main dark background color */
-            --text-color: #f0f0f0; /* Light text color */
-            --light-text: #b0b0b0; /* Muted text color for subheadings/metadata */
-            --nav-height: 80px;
-            --top-strip-height: 30px; 
-            --accent-glow: rgba(255, 69, 0, 0.3);
+            --primary-color: #ff4500; 
+            --secondary-color: #2e2e2e; 
+            --background-color: #1a1a1a; 
+            --text-color: #f0f0f0; 
+            --light-text: #b0b0b0; 
+            --nav-height: 85px;
+            --top-strip-height: 35px; 
+            --transition-speed: 0.4s;
+            --container-max: 1600px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ==========================================================================
+           2. GLOBAL RESET & SCROLLBAR
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
 
         body {
             font-family: 'Georgia', serif; 
             background-color: var(--background-color);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.8;
             padding-top: var(--top-strip-height); 
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         main {
-            padding: 0 4%;
-            max-width: 1600px;
+            padding: 0 5%;
+            max-width: var(--container-max);
             margin: 0 auto;
         }
 
-        /* Breaking News/Top Strip */
+        /* ==========================================================================
+           3. TOP STRIP & HEADER
+           ========================================================================== */
         .top-strip {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--top-strip-height);
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            padding: 0 4%;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--top-strip-height);
+            background-color: var(--primary-color); color: #000;
+            z-index: 3000; display: flex; align-items: center; padding: 0 5%;
+            font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
         }
+
         .top-strip-label {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 2px 10px;
-            margin-right: 15px;
-            border-radius: 2px;
-        }
-        .top-strip a {
-            color: var(--background-color);
-            text-decoration: none;
-            transition: opacity 0.2s;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .top-strip a:hover {
-            opacity: 0.7;
+            background-color: #000; color: #fff; padding: 3px 12px; margin-right: 20px; border-radius: 2px;
         }
 
-        .content-spacer {
-            height: calc(var(--nav-height) + var(--top-strip-height)); 
-            width: 100%;
-        }
-
-        /* 2. Header (Navigation Bar) */
         .navbar {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0 4%;
-            height: var(--nav-height); 
-            border-bottom: 1px solid #2a2a2a;
-            width: 100%;
-            z-index: 1500;
-            position: fixed; 
-            top: var(--top-strip-height); 
-            background-color: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
+            display: flex; justify-content: flex-start; align-items: center;
+            padding: 0 5%; height: var(--nav-height); border-bottom: 1px solid #333;
+            width: 100%; z-index: 2500; position: fixed; top: var(--top-strip-height); 
+            background-color: rgba(26, 26, 26, 0.98); backdrop-filter: blur(15px);
         }
 
-        .logo {
-            font-size: 2.2rem; 
-            font-weight: 900;
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            line-height: 1;
-            cursor: pointer;
-        }
-
-        .logo-main {
-            font-family: 'Times New Roman', serif;
-            letter-spacing: -1px;
-        }
-        
-        .logo-main .logo-x {
-            color: var(--primary-color);
-            font-weight: 900;
-        }
-        
-        .logo-main .logo-suffix {
-            font-size: 0.7em;
-            color: var(--light-text);
-            text-transform: lowercase;
-            font-weight: normal;
-        }
+        .logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; color: inherit; }
+        .logo-main { font-family: 'Times New Roman', serif; font-size: 2.4rem; font-weight: 900; letter-spacing: -1.5px; }
+        .logo-x { color: var(--primary-color); }
+        .logo-suffix { font-size: 0.7em; color: var(--light-text); font-weight: normal; }
 
         .logo-subheading {
-            font-size: 0.65rem;
-            font-weight: bold;
-            color: var(--light-text);
-            margin-top: 6px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        .logo:hover .logo-subheading {
-            color: var(--primary-color);
+            font-size: 0.65rem; font-weight: bold; color: var(--light-text); margin-top: 8px;
+            letter-spacing: 7px; text-transform: uppercase;
         }
 
-        .nav-links {
-            margin-left: auto;
-            display: flex;
+        .nav-links { margin-left: auto; display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--light-text); text-decoration: none; font-size: 0.85rem;
+            transition: all var(--transition-speed); text-transform: uppercase;
+            font-weight: 800; letter-spacing: 1px; position: relative;
+        }
+
+        .nav-links a:not(:last-child)::after {
+            content: "|"; margin: 0 25px; color: #444; font-weight: 300;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero-section {
+            display: flex; padding: 100px 0 80px 0; gap: 60px; border-bottom: 1px solid #333;
             align-items: center;
         }
 
-        .nav-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 8px 0;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            font-weight: bold;
-            position: relative;
-        }
-
-        /* Visual Pipe Separators */
-        .nav-links a:not(:last-child)::after {
-            content: "|";
-            margin: 0 20px;
-            color: #3d3d3d;
-            font-weight: normal;
-            pointer-events: none;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary-color);
-        }
-        
-        .nav-links a::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover::before {
-            width: 100%;
-        }
-
-        /* 3. Hero Section */
-        .hero-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 80px 0 60px 0;
-            gap: 50px;
-            border-bottom: 1px solid #2a2a2a;
-        }
-        
+        .hero-content { flex: 1.2; }
         .hero-tag {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            display: block;
-            letter-spacing: 2px;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 50%;
+            font-size: 0.85rem; font-weight: 900; color: var(--primary-color);
+            text-transform: uppercase; margin-bottom: 20px; display: block; letter-spacing: 3px;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 25px;
-            line-height: 1.05;
-            color: #fff;
+            font-size: 4rem; line-height: 1.05; margin-bottom: 30px; font-weight: 900;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--light-text);
-            margin-bottom: 30px;
-            max-width: 90%;
-        }
+        .hero-content p { font-size: 1.25rem; color: var(--light-text); margin-bottom: 40px; max-width: 90%; }
         
-        .hero-metadata {
-            font-size: 0.95rem;
-            color: var(--light-text);
-            opacity: 0.8;
-            margin-bottom: 45px;
-            font-style: italic;
+        .hero-cta {
+            padding: 18px 40px; background: var(--primary-color); color: #000;
+            border: none; font-weight: 900; cursor: pointer; text-transform: uppercase;
+            letter-spacing: 2px; transition: 0.3s; border-radius: 4px;
         }
-        .hero-metadata strong {
-            color: var(--primary-color);
-            font-weight: bold;
-            font-style: normal;
-        }
+        .hero-cta:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3); }
 
-        .hero-actions button {
-            padding: 15px 35px;
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            border: 2px solid var(--primary-color);
-            font-weight: 900;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .hero-media {
+            flex: 1; position: relative; padding-bottom: 28%; height: 0;
+            border: 4px solid var(--primary-color); border-radius: 12px; overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
         }
-        
-        .hero-actions button:hover {
-            background-color: transparent;
-            color: var(--primary-color);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
+        .hero-media iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .hero-video-container {
-            flex: 1;
-            max-width: 50%;
-            position: relative;
-            padding-bottom: 28.125%; 
-            height: 0; 
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            border: 4px solid var(--primary-color); 
-        }
+        /* ==========================================================================
+           5. MAIN GRID SYSTEM
+           ========================================================================== */
+        .content-spacer { height: calc(var(--nav-height) + var(--top-strip-height)); }
 
-        .hero-video-container iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
+        .main-grid { display: flex; padding: 80px 0; gap: 60px; }
+        .article-feed { flex: 3; }
+        .sidebar { flex: 1.3; }
 
-        /* 4. MAIN CONTENT GRID */
-        .main-content-grid {
-            display: flex;
-            padding: 60px 0 100px 0;
-            gap: 50px;
-        }
-
-        .main-articles { flex: 3; }
-        .sidebar { flex: 1.2; min-width: 320px; }
-
-        .article-list h2, .sidebar-module h3 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            border-bottom: 3px solid;
-            border-image: linear-gradient(to right, var(--primary-color) 20%, #333 80%) 1;
-            padding-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Must Read Styles */
-        .must-read-module {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            margin-bottom: 50px;
-            border-radius: 10px;
-            border-left: 5px solid var(--primary-color);
+        /* Article Cards */
+        .section-header {
+            font-size: 2rem; margin-bottom: 40px; text-transform: uppercase;
+            letter-spacing: 2px; border-bottom: 4px solid var(--primary-color);
+            display: inline-block; padding-bottom: 10px;
         }
 
         .article-card {
-            padding: 30px 0;
-            border-bottom: 1px solid #2a2a2a;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            padding: 40px 0; border-bottom: 1px solid #333; cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); position: relative;
         }
         
-        .article-card:hover {
-            background-color: rgba(255, 69, 0, 0.03);
-            padding-left: 25px;
+        .article-card:hover { padding-left: 30px; background: rgba(255,69,0,0.02); }
+        .article-card::before {
+            content: ""; position: absolute; left: 0; top: 0; width: 0; height: 100%;
+            background: var(--primary-color); transition: 0.3s;
         }
+        .article-card:hover::before { width: 5px; }
 
-        .article-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-            line-height: 1.3;
+        .article-card .meta {
+            color: var(--primary-color); font-size: 0.9rem; font-weight: 900;
+            text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1.5px;
         }
+        .article-card h3 { font-size: 1.9rem; margin-bottom: 15px; line-height: 1.2; transition: 0.3s; }
         .article-card:hover h3 { color: var(--primary-color); }
+        .article-card p.excerpt { color: var(--light-text); font-size: 1.15rem; max-width: 95%; }
 
-        .article-card p.metadata {
-            font-size: 0.85rem;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 1px;
+        /* ==========================================================================
+           6. SIDEBAR MODULES
+           ========================================================================== */
+        .sidebar-widget {
+            background: var(--secondary-color); padding: 35px; border-radius: 12px;
+            margin-bottom: 50px; border: 1px solid #444;
         }
-        
-        .article-card p.summary {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            max-width: 95%;
-        }
+        .sidebar-widget h4 { font-size: 1.4rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-color); }
 
-        /* Sidebar Styling */
-        .sidebar-module {
-            background-color: var(--secondary-color);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            border: 1px solid #333;
-        }
+        .trending-row { display: block; padding: 15px 0; border-bottom: 1px solid #444; text-decoration: none; color: inherit; }
+        .trending-row:last-child { border-bottom: none; }
+        .trending-row span { font-size: 0.8rem; opacity: 0.6; display: block; margin-bottom: 5px; }
+        .trending-row p { font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
+        .trending-row:hover p { color: var(--primary-color); padding-left: 10px; }
 
-        .trending-list { list-style: none; }
-        .trending-list li { padding: 15px 0; border-bottom: 1px dashed #444; }
-        .trending-list li:last-child { border-bottom: none; }
-        .trending-list li a { 
-            color: var(--text-color); 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-        }
-        .trending-list li a:hover { color: var(--primary-color); transform: translateX(5px); transition: 0.2s; }
+        .video-box { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin: 20px 0; }
+        .video-box iframe { position: absolute; top: 0; width: 100%; height: 100%; border: none; }
 
-        .video-module-embed {
-            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0; border-radius: 6px;
-        }
-        .video-module-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
-        /* 5. FOOTER */
+        /* ==========================================================================
+           7. FOOTER
+           ========================================================================== */
         footer {
-            background-color: #0a0a0a;
-            color: var(--light-text);
-            padding: 100px 4% 60px 4%;
-            text-align: center;
-            border-top: 1px solid #2a2a2a;
+            background: #000; padding: 120px 5% 60px 5%; border-top: 1px solid #333;
         }
-        
-        .footer-logo { font-size: 2rem; font-family: 'Times New Roman', serif; margin-bottom: 30px; color: #fff; }
-        .footer-links { margin-bottom: 40px; }
-        .footer-links a { color: var(--light-text); margin: 0 20px; text-decoration: none; font-size: 1rem; font-weight: bold; }
-        .footer-links a:hover { color: var(--primary-color); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; margin-bottom: 80px; text-align: left; }
+        .footer-logo .logo-main { font-size: 2.8rem; margin-bottom: 20px; display: block; }
+        .footer-col h5 { color: #fff; font-size: 1.1rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul li a { color: var(--light-text); text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary-color); }
 
-        /* 6. RESPONSIVENESS */
+        .newsletter-input {
+            width: 100%; padding: 15px; background: #1a1a1a; border: 1px solid #444;
+            color: #fff; margin-bottom: 20px; border-radius: 4px;
+        }
+
+        /* ==========================================================================
+           8. RESPONSIVE DESIGN
+           ========================================================================== */
         @media (max-width: 1200px) {
-            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content h1 { font-size: 3rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
-            .navbar { height: auto; padding: 20px 4%; flex-direction: column; align-items: flex-start; }
-            .nav-links { margin: 20px 0 0 0; flex-wrap: wrap; gap: 10px; width: 100%; }
+            .navbar { height: auto; padding: 20px 5%; flex-direction: column; }
+            .nav-links { margin-top: 25px; flex-wrap: wrap; justify-content: center; gap: 10px; }
             .nav-links a:not(:last-child)::after { display: none; }
-            .nav-links a { border: 1px solid #333; padding: 8px 15px; border-radius: 4px; font-size: 0.75rem; }
-            .content-spacer { height: 180px; }
-            .hero-section { flex-direction: column; padding: 40px 0; }
-            .hero-content, .hero-video-container { max-width: 100%; width: 100%; }
-            .hero-video-container { order: 1; padding-bottom: 56.25%; }
-            .hero-content { order: 2; text-align: center; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .main-content-grid { flex-direction: column; }
+            .nav-links a { border: 1px solid #333; padding: 10px 15px; border-radius: 5px; }
+            .hero-section { flex-direction: column; text-align: center; }
+            .hero-media { width: 100%; padding-bottom: 56.25%; order: -1; }
+            .main-grid { flex-direction: column; }
+            .content-spacer { height: 220px; }
         }
     </style>
 </head>
@@ -402,22 +223,24 @@
 
     <div class="top-strip">
         <span class="top-strip-label">Breaking</span>
-        <a href="#">Exclusive: New Legislation Set to Impact Digital Creator Rights</a>
+        <marquee behavior="scroll" direction="left" scrollamount="8">
+            Exclusive: New Regulatory Frameworks for AI Content Creators Announced... &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 
+            The Columns: Why Digital Archiving is the Most Important Skill of 2026... &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+            Watch: Aditya Giri discusses the impact of LLMs on Independent Journalism...
+        </marquee>
     </div>
 
     <header class="navbar">
-        <div class="logo">
-            <div class="logo-main">
-                Editorial<span class="logo-x">X</span><span class="logo-suffix">.in</span>
-            </div>
+        <a href="#" class="logo">
+            <div class="logo-main">Editorial<span class="logo-x">X</span><span class="logo-suffix">.in</span></div>
             <span class="logo-subheading">READ | WATCH | THINK</span>
-        </div>
+        </a>
         <nav class="nav-links">
             <a href="#" class="active">HOME</a>
-            <a href="#">The Columns</a>
-            <a href="#">Watch</a>
-            <a href="#">About</a>
-            <a href="#">Resources/Sources</a>
+            <a href="#columns">The Columns</a>
+            <a href="#watch">Watch</a>
+            <a href="#about">About</a>
+            <a href="#resources">Resources/Sources</a>
         </nav>
     </header>
 
@@ -427,142 +250,133 @@
         <section class="hero-section">
             <div class="hero-content">
                 <span class="hero-tag">FEATURED / TECH ANALYSIS</span>
-                <h1>The Quantum Leap: Why Every Creator Must Master AI Tools Now</h1>
-                <p>An in-depth analysis of how generative models are reshaping the digital content landscape, from scriptwriting to final renders. Explore the future of digital creation.</p>
-                <p class="hero-metadata">By <strong>Aditya Giri</strong> | December 17, 2025 | 8 min read</p>
-                <div class="hero-actions">
-                    <button>Read Full Story <i class="fas fa-chevron-right" style="margin-left:10px;"></i></button>
-                </div>
+                <h1>Why Systems Thinking is the Next Creative Superpower</h1>
+                <p>An exploration of how creators are using technical frameworks and cross-disciplinary logic to scale their artistic vision in an AI-driven world.</p>
+                <button class="hero-cta">Read the Analysis <i class="fas fa-arrow-right" style="margin-left:15px;"></i></button>
             </div>
-            <div class="hero-video-container">
+            <div class="hero-media">
                 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
         </section>
 
-        <div class="main-content-grid">
-            <section class="main-articles">
-                
-                <div class="must-read-module">
-                    <h2 style="border:none; color:var(--primary-color); font-size:1.1rem; margin-bottom:20px;">MUST READ / ESSAYS</h2>
-                    <div class="article-card" style="padding:15px 0;">
-                        <p class="metadata">POLITICS | 12 MIN READ</p>
-                        <h3>The Hidden Cost of Cloud Computing and Sustainability</h3>
-                        <p class="summary">As data centers expand, the environmental toll of our digital lives becomes impossible to ignore.</p>
-                    </div>
-                    <div class="article-card" style="padding:15px 0; border-bottom:none;">
-                        <p class="metadata">CULTURE | 9 MIN READ</p>
-                        <h3>Interrogating the New Wave of Surrealist Fiction</h3>
-                        <p class="summary">Why modern authors are returning to the dreamscape to explain a fractured reality.</p>
-                    </div>
-                </div>
-
-                <h2 id="latest">Latest Analysis</h2>
-
-                <div class="article-card">
-                    <p class="metadata">WRITING | By <strong class="author">Jane Smith</strong> | DEC 15, 2025</p>
-                    <h3>Rediscovering the Classics: Why Dystopian Fiction Remains Relevant</h3>
-                    <p class="summary">A look at how classic literary warnings mirror modern societal concerns and political debates.</p>
-                </div>
-
-                <div class="article-card">
-                    <p class="metadata">OPINION | By <strong class="author">John Doe</strong> | DEC 14, 2025</p>
-                    <h3>The Attention Economy: Is Social Media Dumbing Down Creative Depth?</h3>
-                    <p class="summary">Analyzing the trade-offs between viral success and substantive creative output in the digital age.</p>
-                </div>
-
-                <div class="article-card">
-                    <p class="metadata">TECH | By <strong class="author">Aditya Giri</strong> | DEC 13, 2025</p>
-                    <h3>Beyond ChatGPT: A Guide to the Best Emerging Open-Source LLMs</h3>
-                    <p class="summary">We dive into the non-commercial large language models challenging the industry giants like OpenAI.</p>
-                </div>
-
-                <div class="article-card">
-                    <p class="metadata">CINEMA | By <strong class="author">Elara Vance</strong> | DEC 10, 2025</p>
-                    <h3>The Art of the Silent Film Revival</h3>
-                    <p class="summary">A review of modern directors re-embracing pre-sound aesthetics and visual storytelling techniques.</p>
-                </div>
-
-                <div class="article-card">
-                    <p class="metadata">SOCIETY | By <strong class="author">Marcus Thorne</strong> | DEC 08, 2025</p>
-                    <h3>The Architecture of Virtual Spaces: Beyond Gaming</h3>
-                    <p class="summary">How video game level design is influencing real-world urban planning and office layouts.</p>
-                </div>
-
-                <div class="article-card">
-                    <p class="metadata">PHILOSOPHY | By <strong class="author">Dr. Aris Thorne</strong> | DEC 05, 2025</p>
-                    <h3>The Ethics of Digital Immortality</h3>
-                    <p class="summary">When AI clones our personalities, what happens to the concept of the soul and inheritance?</p>
-                </div>
-
-                <div class="article-card">
-                    <p class="metadata">FUTURE | By <strong class="author">Sarah Jenkins</strong> | DEC 02, 2025</p>
-                    <h3>Mars Colonization: The Psychological Frontier</h3>
-                    <p class="summary">The biggest challenge to reaching Mars isn't the rocket; it's the human mind in isolation.</p>
-                </div>
-
-                <div class="article-card">
-                    <p class="metadata">TECH | By <strong class="author">Aditya Giri</strong> | NOV 28, 2025</p>
-                    <h3>The Semiconductor Wars: Who Owns the Future of Intelligence?</h3>
-                    <p class="summary">Understanding the global supply chain struggle for the chips that power our world.</p>
-                </div>
+        <div class="main-grid">
+            <section class="article-feed" id="feed-container">
+                <h2 class="section-header">The Latest</h2>
                 </section>
 
             <aside class="sidebar">
-                <div class="sidebar-module">
-                    <h3>Trending Topics</h3>
-                    <ul class="trending-list">
-                        <li><a href="#"><i class="fas fa-hashtag" style="font-size:0.8rem; margin-right:10px; color:var(--primary-color);"></i> GenerativeAIEthics</a></li>
-                        <li><a href="#"><i class="fas fa-hashtag" style="font-size:0.8rem; margin-right:10px; color:var(--primary-color);"></i> FutureOfJournalism</a></li>
-                        <li><a href="#"><i class="fas fa-hashtag" style="font-size:0.8rem; margin-right:10px; color:var(--primary-color);"></i> DigitalNomadLife</a></li>
-                        <li><a href="#"><i class="fas fa-hashtag" style="font-size:0.8rem; margin-right:10px; color:var(--primary-color);"></i> SciFiHorror</a></li>
-                        <li><a href="#"><i class="fas fa-hashtag" style="font-size:0.8rem; margin-right:10px; color:var(--primary-color);"></i> LLMOpenSource</a></li>
-                    </ul>
+                <div class="sidebar-widget">
+                    <h4>Trending Columns</h4>
+                    <div id="trending-container">
+                        </div>
                 </div>
 
-                <div class="sidebar-module">
-                    <h3>Featured Video</h3>
-                    <div class="video-module-embed">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                <div class="sidebar-widget">
+                    <h4>Watch Feature</h4>
+                    <div class="video-box">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
                     </div>
-                    <p class="video-module-caption">The Evolution of Creative Work in 2025.</p>
+                    <p style="font-size:0.9rem; color:var(--light-text); font-style:italic;">Interview: The Future of Decentered Content with the EditorialX Team.</p>
                 </div>
 
-                <div class="sidebar-module">
-                    <h3>Explore Sections</h3>
-                    <ul class="trending-list">
-                        <li><a href="#">Tech Deep Dives</a></li>
-                        <li><a href="#">Literary Criticism</a></li>
-                        <li><a href="#">Cultural Debates</a></li>
-                        <li><a href="#">Staff Interviews</a></li>
-                        <li><a href="#">Long-form Archives</a></li>
-                        <li><a href="#">Guest Submissions</a></li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-module" style="background-color: var(--primary-color); color: #000;">
-                    <h3 style="border-color: #000; color: #000;">Newsletter</h3>
-                    <p style="font-weight: bold; margin-bottom: 15px;">Get the weekly perspective directly in your inbox.</p>
-                    <input type="email" placeholder="Your Email" style="width:100%; padding:10px; margin-bottom:10px; border:none; border-radius:4px;">
-                    <button style="width:100%; padding:10px; background:#000; color:#fff; border:none; font-weight:bold; cursor:pointer; border-radius:4px;">SUBSCRIBE</button>
+                <div class="sidebar-widget" style="background:var(--primary-color); border:none;">
+                    <h4 style="color:#000;">The Perspective</h4>
+                    <p style="color:#000; font-weight:bold; margin-bottom:20px;">Join 15,000+ thinkers who receive our weekly deep-dives.</p>
+                    <input type="email" class="newsletter-input" placeholder="Enter your email...">
+                    <button style="width:100%; padding:15px; background:#000; color:#fff; border:none; font-weight:900; cursor:pointer; border-radius:4px;">SUBSCRIBE</button>
                 </div>
             </aside>
         </div>
     </main>
 
     <footer>
-        <div class="footer-logo">Editorial<span style="color:var(--primary-color)">X</span>.in</div>
-        <div class="footer-links">
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Advertise</a>
-            <a href="#">Archives</a>
-            <a href="#">Staff</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="logo-main" style="color:#fff;">Editorial<span class="logo-x">X</span></span>
+                <p style="color:var(--light-text); margin-bottom:30px;">Analyzing the intersection of technology, culture, and the human condition. We provide the context, you provide the thought.</p>
+                <div style="display:flex; gap:20px; font-size:1.5rem;">
+                    <a href="#" style="color:var(--light-text);"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color:var(--light-text);"><i class="fab fa-youtube"></i></a>
+                    <a href="#" style="color:var(--light-text);"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h5>Navigate</h5>
+                <ul>
+                    <li><a href="#">The Columns</a></li>
+                    <li><a href="#">Video Essays</a></li>
+                    <li><a href="#">Staff Biographies</a></li>
+                    <li><a href="#">Archive 2024-2025</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Legal</h5>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Guidelines</a></li>
+                    <li><a href="#">Contributor Rights</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Contribute</h5>
+                <p style="font-size:0.9rem; margin-bottom:20px;">Interested in writing for EditorialX? We are always looking for fresh perspectives.</p>
+                <a href="mailto:contact@editorialx.in" style="color:var(--primary-color); font-weight:bold; text-decoration:none;">pitch@editorialx.in</a>
+            </div>
         </div>
-        <div style="font-size: 0.9rem; opacity: 0.6; margin-bottom: 20px;">
-            Analyzing the intersection of technology, culture, and humanity.
+        <div style="border-top:1px solid #222; padding-top:40px; text-align:center; font-size:0.8rem; opacity:0.5; letter-spacing:1px;">
+            &copy; 2025 EDITORIALX.IN | READ | WATCH | THINK | POWERED BY CREATIVE INTELLIGENCE
         </div>
-        <p style="font-size: 0.8rem; opacity: 0.4;">&copy; 2025 EditorialX.in. All Rights Reserved. READ | WATCH | THINK.</p>
     </footer>
 
+    <script>
+        // YOUR TEAM EDITS THIS DATA SECTION ONLY
+        const articles = [
+            { cat: "TECH", author: "Aditya Giri", date: "DEC 17, 2025", title: "Beyond ChatGPT: The Rise of Local LLMs", summary: "Why running your own AI locally is the ultimate privacy and performance move for 2026.", link: "#" },
+            { cat: "CULTURE", author: "Sarah Jenkins", date: "DEC 16, 2025", title: "The Return of the Personal Blog", summary: "How the 'Dead Internet' theory is driving writers back to independent platforms and RSS feeds.", link: "#" },
+            { cat: "RESOURCES", author: "EditorialX Team", date: "DEC 15, 2025", title: "The Creator Toolkit: 50+ Open Source Assets", summary: "A curated master-list of fonts, templates, and coding resources for modern publishers.", link: "#" },
+            { cat: "OPINION", author: "Marcus Thorne", date: "DEC 14, 2025", title: "The Attention Economy is Dying", summary: "Why the shift from quantity to quality is the only way for media houses to survive the next decade.", link: "#" },
+            { cat: "ANALYSIS", author: "Aditya Giri", date: "DEC 12, 2025", title: "The Semiconductor War: Chips & Power", summary: "A deep dive into the global supply chain struggle that determines who controls AI future.", link: "#" },
+            { cat: "LITERATURE", author: "Elara Vance", date: "DEC 10, 2025", title: "Dystopia as a Mirror, Not a Map", summary: "Revisiting 1984 and Brave New World in the age of algorithmic governance and hyper-consumption.", link: "#" },
+            { cat: "WATCH", author: "EditorialX Staff", date: "DEC 08, 2025", title: "Documentary: The Last Human Editor?", summary: "A video exploration into the changing role of journalism in the automated era.", link: "#" },
+            { cat: "TECH", author: "Aditya Giri", date: "DEC 05, 2025", title: "Quantum Computing for Beginners", summary: "Breaking down the complex physics into what it actually means for your digital security.", link: "#" }
+        ];
+
+        const trending = [
+            { tag: "#AIEthics", title: "The Moral Maze of Generative Models" },
+            { tag: "#DigitalNomad", title: "Why Lisbon is No Longer the Creator Capital" },
+            { tag: "#Web3", title: "Is Decentralized Social Media Finally Ready?" },
+            { tag: "#WritingTips", title: "How to Build a Writing Habit that Sticks" }
+        ];
+
+        // ENGINE: Renders the items into the HTML structure
+        function initEditorialX() {
+            const feed = document.getElementById('feed-container');
+            const trendContainer = document.getElementById('trending-container');
+
+            // Render Articles
+            articles.forEach(item => {
+                feed.innerHTML += `
+                    <div class="article-card" onclick="window.location.href='${item.link}'">
+                        <p class="meta">${item.cat} | BY ${item.author} | ${item.date}</p>
+                        <h3>${item.title}</h3>
+                        <p class="excerpt">${item.summary}</p>
+                    </div>
+                `;
+            });
+
+            // Render Trending
+            trending.forEach(t => {
+                trendContainer.innerHTML += `
+                    <a href="#" class="trending-row">
+                        <span>${t.tag}</span>
+                        <p>${t.title}</p>
+                    </a>
+                `;
+            });
+        }
+
+        window.onload = initEditorialX;
+    </script>
 </body>
 </html>
