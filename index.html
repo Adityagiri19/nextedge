@@ -66,6 +66,7 @@
             padding: 0 5%; height: var(--nav-height); border-bottom: 1px solid #333;
             width: 100%; z-index: 2500; position: fixed; top: var(--top-strip-height); 
             background-color: rgba(26, 26, 26, 0.98); backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
         }
 
         .logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; color: inherit; }
@@ -200,7 +201,7 @@
         }
 
         /* ==========================================================================
-           8. RESPONSIVE DESIGN
+           8. MOBILE RESPONSIVE REFACTOR (Crucial Changes)
            ========================================================================== */
         @media (max-width: 1200px) {
             .hero-content h1 { font-size: 3rem; }
@@ -208,14 +209,82 @@
         }
 
         @media (max-width: 768px) {
-            .navbar { height: auto; padding: 20px 5%; flex-direction: column; }
-            .nav-links { margin-top: 25px; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            /* Adjust padding and spacer for small screens */
+            body { padding-top: var(--top-strip-height); }
+            .content-spacer { height: 230px; }
+
+            /* Navbar transforms into a stacked column layout */
+            .navbar { 
+                height: auto; 
+                padding: 15px 5%; 
+                flex-direction: column; 
+                align-items: flex-start;
+                position: fixed;
+            }
+
+            .logo-main { font-size: 1.8rem; }
+            .logo-subheading { font-size: 0.55rem; letter-spacing: 4px; }
+
+            .nav-links { 
+                margin-left: 0; 
+                margin-top: 15px; 
+                flex-wrap: wrap; 
+                gap: 10px; 
+                width: 100%;
+                justify-content: flex-start;
+            }
             .nav-links a:not(:last-child)::after { display: none; }
-            .nav-links a { border: 1px solid #333; padding: 10px 15px; border-radius: 5px; }
-            .hero-section { flex-direction: column; text-align: center; }
-            .hero-media { width: 100%; padding-bottom: 56.25%; order: -1; }
-            .main-grid { flex-direction: column; }
-            .content-spacer { height: 220px; }
+            
+            /* Give links a button-like feel for easier tapping */
+            .nav-links a { 
+                font-size: 0.75rem; 
+                background: #252525; 
+                padding: 6px 12px; 
+                border-radius: 4px; 
+                border: 1px solid #333;
+            }
+
+            /* Hero Section stacking */
+            .hero-section { 
+                flex-direction: column; 
+                padding: 40px 0; 
+                text-align: center; 
+                gap: 30px;
+            }
+            .hero-media { 
+                width: 100%; 
+                padding-bottom: 56.25%; /* Standard 16:9 for mobile */
+                order: -1; /* Video on top for mobile */
+            }
+            .hero-content h1 { font-size: 2.2rem; margin-bottom: 20px; }
+            .hero-content p { font-size: 1.1rem; margin: 0 auto 30px auto; }
+
+            /* Main Grid stacking */
+            .main-grid { flex-direction: column; padding: 40px 0; gap: 40px; }
+            
+            .section-header { font-size: 1.6rem; text-align: center; display: block; }
+            
+            /* Article Card mobile adjustments */
+            .article-card { padding: 30px 0; }
+            .article-card h3 { font-size: 1.4rem; }
+            .article-card p.excerpt { font-size: 1rem; }
+
+            /* Sidebar stacking below content */
+            .sidebar { width: 100%; }
+            .sidebar-widget { padding: 20px; }
+
+            /* Footer stacking */
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-logo .logo-main { font-size: 2rem; }
+            .footer-col { text-align: center; }
+            .footer-col h5::after { content: ""; display: block; width: 30px; height: 2px; background: var(--primary-color); margin: 10px auto; }
+        }
+
+        /* Support for very small devices */
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 1.8rem; }
+            .top-strip { font-size: 0.65rem; }
+            .nav-links a { font-size: 0.7rem; padding: 5px 10px; }
         }
     </style>
 </head>
@@ -262,13 +331,12 @@
         <div class="main-grid">
             <section class="article-feed" id="feed-container">
                 <h2 class="section-header">The Latest</h2>
-                </section>
+            </section>
 
             <aside class="sidebar">
                 <div class="sidebar-widget">
                     <h4>Trending Columns</h4>
-                    <div id="trending-container">
-                        </div>
+                    <div id="trending-container"></div>
                 </div>
 
                 <div class="sidebar-widget">
@@ -276,7 +344,7 @@
                     <div class="video-box">
                         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
                     </div>
-                    <p style="font-size:0.9rem; color:var(--light-text); font-style:italic;">Interview: The Future of Decentered Content with the EditorialX Team.</p>
+                    <p style="font-size:0.9rem; color:var(--light-text); font-style:italic; text-align: center;">Interview: The Future of Decentered Content with the EditorialX Team.</p>
                 </div>
 
                 <div class="sidebar-widget" style="background:var(--primary-color); border:none;">
@@ -294,7 +362,7 @@
             <div class="footer-col">
                 <span class="logo-main" style="color:#fff;">Editorial<span class="logo-x">X</span></span>
                 <p style="color:var(--light-text); margin-bottom:30px;">Analyzing the intersection of technology, culture, and the human condition. We provide the context, you provide the thought.</p>
-                <div style="display:flex; gap:20px; font-size:1.5rem;">
+                <div style="display:flex; gap:20px; font-size:1.5rem; justify-content: center;">
                     <a href="#" style="color:var(--light-text);"><i class="fab fa-twitter"></i></a>
                     <a href="#" style="color:var(--light-text);"><i class="fab fa-youtube"></i></a>
                     <a href="#" style="color:var(--light-text);"><i class="fab fa-linkedin"></i></a>
@@ -330,31 +398,24 @@
     </footer>
 
     <script>
-        // YOUR TEAM EDITS THIS DATA SECTION ONLY
         const articles = [
             { cat: "TECH", author: "Aditya Giri", date: "DEC 17, 2025", title: "Beyond ChatGPT: The Rise of Local LLMs", summary: "Why running your own AI locally is the ultimate privacy and performance move for 2026.", link: "#" },
             { cat: "CULTURE", author: "Sarah Jenkins", date: "DEC 16, 2025", title: "The Return of the Personal Blog", summary: "How the 'Dead Internet' theory is driving writers back to independent platforms and RSS feeds.", link: "#" },
             { cat: "RESOURCES", author: "EditorialX Team", date: "DEC 15, 2025", title: "The Creator Toolkit: 50+ Open Source Assets", summary: "A curated master-list of fonts, templates, and coding resources for modern publishers.", link: "#" },
             { cat: "OPINION", author: "Marcus Thorne", date: "DEC 14, 2025", title: "The Attention Economy is Dying", summary: "Why the shift from quantity to quality is the only way for media houses to survive the next decade.", link: "#" },
-            { cat: "ANALYSIS", author: "Aditya Giri", date: "DEC 12, 2025", title: "The Semiconductor War: Chips & Power", summary: "A deep dive into the global supply chain struggle that determines who controls AI future.", link: "#" },
-            { cat: "LITERATURE", author: "Elara Vance", date: "DEC 10, 2025", title: "Dystopia as a Mirror, Not a Map", summary: "Revisiting 1984 and Brave New World in the age of algorithmic governance and hyper-consumption.", link: "#" },
-            { cat: "WATCH", author: "EditorialX Staff", date: "DEC 08, 2025", title: "Documentary: The Last Human Editor?", summary: "A video exploration into the changing role of journalism in the automated era.", link: "#" },
-            { cat: "TECH", author: "Aditya Giri", date: "DEC 05, 2025", title: "Quantum Computing for Beginners", summary: "Breaking down the complex physics into what it actually means for your digital security.", link: "#" }
+            { cat: "ANALYSIS", author: "Aditya Giri", date: "DEC 12, 2025", title: "The Semiconductor War: Chips & Power", summary: "A deep dive into the global supply chain struggle that determines who controls AI future.", link: "#" }
         ];
 
         const trending = [
             { tag: "#AIEthics", title: "The Moral Maze of Generative Models" },
             { tag: "#DigitalNomad", title: "Why Lisbon is No Longer the Creator Capital" },
-            { tag: "#Web3", title: "Is Decentralized Social Media Finally Ready?" },
-            { tag: "#WritingTips", title: "How to Build a Writing Habit that Sticks" }
+            { tag: "#Web3", title: "Is Decentralized Social Media Finally Ready?" }
         ];
 
-        // ENGINE: Renders the items into the HTML structure
         function initEditorialX() {
             const feed = document.getElementById('feed-container');
             const trendContainer = document.getElementById('trending-container');
 
-            // Render Articles
             articles.forEach(item => {
                 feed.innerHTML += `
                     <div class="article-card" onclick="window.location.href='${item.link}'">
@@ -365,7 +426,6 @@
                 `;
             });
 
-            // Render Trending
             trending.forEach(t => {
                 trendContainer.innerHTML += `
                     <a href="#" class="trending-row">
